@@ -58,6 +58,9 @@ fingerprintAlgorithm = "sha512"
   showWordCount = true
   sharingLinks = ["reddit", "bluesky", "email"]
   showZenMode = false
+  showEdit = true
+  editURL = "https://github.com/maciekk/total-token-vortex/edit/master/"
+  editAppendPath = true
 
 [list]
   showHero = false

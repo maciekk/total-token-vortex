@@ -19,6 +19,12 @@
         {{ partial "project-card.html" (dict "page" . "imageWidth" "18rem") }}
       {{ end }}
     </section>
+    <div class="mt-8" style="max-width: 520px;">
+      <p class="mb-2 text-sm text-neutral-400 dark:text-neutral-500">GitHub activity</p>
+      <img src="https://github-readme-activity-graph.vercel.app/graph?username=maciekk&bg_color=260850&color=666666&line=1a73e8&point=1a73e8&area=true&hide_border=true"
+           alt="GitHub contribution graph"
+           class="not-prose w-full">
+    </div>
   {{ end }}
 
   {{ if $research }}

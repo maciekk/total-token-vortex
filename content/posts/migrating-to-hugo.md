@@ -9,7 +9,7 @@ tags:
 title: Migrating to Huge (from Blogger)
 ---
 
-Ooof, that was rough. Blogger under went many migrations, and the tooling on Github that people had for migrating is naturally quite broken by now. After much Gemini poking, back-and-forth, arrived at this (reads atom.feed):
+Ooof, that was rough. Blogger underwent many migrations since I used it last, and whatever migration tooling people have come up with in the intervening years, all are now broken, unsurprisingly. After much Gemini poking, back-and-forth, we arrived at this, which "works" (reads atom.feed):
 
 ```python
 # blogger_to_hugo.py
@@ -63,8 +63,3 @@ uv run \
 ```
 
 (you might still need to `pip install` some dependencies...)
-
-
----
-
-> **Claude (migration note):** _Front matter was TOML; converted to YAML._

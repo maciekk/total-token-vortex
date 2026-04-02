@@ -14,3 +14,8 @@ title = "The Total Token Vortex"
   name = "Maciej Kalisiak"
   headline = "Quantum hallucinations, delivered at scale."
   image = "img/profile.jpg"
+  links = [
+    { email = "mailto:mkalisiak@gmail.com" },
+    { github = "https://github.com/maciekk" },
+    { linkedin = "https://www.linkedin.com/in/maciejkalisiak" },
+  ]

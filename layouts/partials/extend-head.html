@@ -1,0 +1,14 @@
+<style>
+  /* Responsive project card images: portrait = stacked, landscape/sm+ = side-by-side */
+  .project-card-img {
+    width: 100%;
+    height: 12rem;
+  }
+  @media (min-width: 640px) {
+    .project-card-img {
+      width: var(--project-img-w);
+      min-width: var(--project-img-w);
+      height: auto;
+    }
+  }
+</style>

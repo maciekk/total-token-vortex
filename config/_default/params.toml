@@ -59,7 +59,7 @@ fingerprintAlgorithm = "sha512"
   sharingLinks = ["reddit", "bluesky", "email"]
   showZenMode = false
   showEdit = true
-  editURL = "https://github.com/maciekk/total-token-vortex/edit/master/"
+  editURL = "https://github.com/maciekk/total-token-vortex/edit/master/content/"
   editAppendPath = true
 
 [list]

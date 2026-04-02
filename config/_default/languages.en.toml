@@ -12,4 +12,5 @@ title = "The Total Token Vortex"
 
 [params.author]
   name = "Maciej Kalisiak"
+  headline = "Quantum hallucinations, delivered at scale."
   image = "img/profile.jpg"

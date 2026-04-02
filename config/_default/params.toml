@@ -33,7 +33,7 @@ fingerprintAlgorithm = "sha512"
   showRecentItems = 5
   showMoreLink = true
   showMoreLinkDest = "posts"
-  cardView = true
+  cardView = false
   cardViewScreenWidth = false
   layoutBackgroundBlur = true
 
@@ -52,7 +52,7 @@ fingerprintAlgorithm = "sha512"
   invertPagination = false
   showReadingTime = true
   showTableOfContents = true
-  showRelatedContent = true
+  showRelatedContent = false
   relatedContentLimit = 3
   showTaxonomies = true
   showWordCount = true
@@ -64,10 +64,10 @@ fingerprintAlgorithm = "sha512"
   showBreadcrumbs = true
   showSummary = true
   showTableOfContents = false
-  showCards = true
+  showCards = false
   orderByWeight = false
   groupByYear = true
-  cardView = true
+  cardView = false
   cardViewScreenWidth = false
 
 [sitemap]
@@ -78,12 +78,12 @@ fingerprintAlgorithm = "sha512"
   showHero = false
   showBreadcrumbs = true
   showTableOfContents = false
-  cardView = true
+  cardView = false
 
 [term]
   showHero = false
   showBreadcrumbs = true
   showTableOfContents = false
   groupByYear = true
-  cardView = true
+  cardView = false
   cardViewScreenWidth = false

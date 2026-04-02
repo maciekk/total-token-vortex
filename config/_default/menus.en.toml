@@ -4,8 +4,9 @@
   pageRef = "posts"
   weight = 10
 
-# -- Footer Menu --
-[[footer]]
+[[main]]
   name = "Tags"
   pageRef = "tags"
-  weight = 10
+  weight = 20
+
+# -- Footer Menu --

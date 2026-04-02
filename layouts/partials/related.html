@@ -1,0 +1,15 @@
+{{ if .Params.showRelatedContent | default (.Site.Params.article.showRelatedContent | default false) }}
+  {{ $related := .Site.RegularPages.Related . | first .Site.Params.article.relatedContentLimit }}
+  {{ with $related }}
+    <h2 class="mt-8 text-2xl font-extrabold mb-2">{{ i18n "article.related_articles" | emojify }}</h2>
+    <ul class="space-y-1 list-disc list-inside">
+      {{ range . }}
+        <li>
+          <a href="{{ .RelPermalink }}" class="decoration-primary-500 hover:underline hover:underline-offset-2 dark:text-neutral">
+            {{ .Title | emojify }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  {{ end }}
+{{ end }}

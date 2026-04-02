@@ -5,7 +5,6 @@ tags:
 - blogging
 - hugo
 - programming
-- review
 title: Migrating to Huge (from Blogger)
 ---
 

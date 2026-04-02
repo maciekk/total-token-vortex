@@ -1,5 +1,7 @@
 {
-  "buildCommand": "hugo --minify --baseURL https://total-token-vortex.vercel.app/",
-  "outputDirectory": "public",
-  "rewrites": [{ "source": "/", "destination": "/index.html" }]
+  "build": {
+    "env": {
+      "HUGO_VERSION": "0.158.0"
+    }
+  }
 }

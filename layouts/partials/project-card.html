@@ -1,0 +1,70 @@
+{{/* Horizontal project card: image on left, title + description on right */}}
+{{ $disableImageOptimization := site.Store.Get "disableImageOptimization" }}
+
+{{ $page := .page }}
+{{ $imageWidth := .imageWidth | default "11rem" }}
+{{ $featured := "" }}
+{{ $featuredURL := "" }}
+{{ if not $page.Params.hideFeatureImage }}
+  {{ with $page.Params.featureimage }}
+    {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
+      {{ if site.Params.hotlinkFeatureImage }}
+        {{ $featuredURL = . }}
+      {{ else }}
+        {{ $featured = resources.GetRemote . }}
+      {{ end }}
+    {{ else }}
+      {{ $featured = resources.Get . }}
+    {{ end }}
+  {{ end }}
+
+  {{ if not (or $featured $featuredURL) }}
+    {{ $images := $page.Resources.ByType "image" }}
+    {{ range slice "*feature*" "*cover*" "*thumbnail*" }}
+      {{ if not $featured }}{{ $featured = $images.GetMatch . }}{{ end }}
+    {{ end }}
+  {{ end }}
+
+  {{ if not $featuredURL }}
+    {{ with $featured }}
+      {{ $featuredURL = .RelPermalink }}
+      {{ if not (or $disableImageOptimization (eq .MediaType.SubType "svg")) }}
+        {{ $featuredURL = (.Resize "600x").RelPermalink }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ $href := $page.RelPermalink }}
+{{ with $page.Params.externalUrl }}{{ $href = . }}{{ end }}
+
+<article class="relative flex flex-row overflow-hidden rounded-lg border border-neutral-300 dark:border-neutral-600">
+  {{ with $featuredURL }}
+    <div class="flex-none relative bg-neutral-100 dark:bg-neutral-800" style="width: {{ $imageWidth }}; min-width: {{ $imageWidth }};">
+      <img
+        src="{{ . }}"
+        alt="{{ $page.Title }}"
+        loading="lazy"
+        decoding="async"
+        class="not-prose absolute inset-0 w-full h-full object-cover">
+    </div>
+  {{ end }}
+  <div class="flex flex-col justify-center p-5 flex-1 min-w-0">
+    <header>
+      <a
+        href="{{ $href }}"
+        {{ with $page.Params.externalUrl }}target="_blank" rel="external"{{ end }}
+        class="not-prose before:absolute before:inset-0 decoration-primary-500 dark:text-neutral text-xl font-bold text-neutral-800 hover:underline hover:underline-offset-2">
+        <h2 class="mt-0 mb-1">
+          {{ $page.Title | emojify }}
+          {{ with $page.Params.externalUrl }}
+            <span class="cursor-default align-top text-xs text-neutral-400 dark:text-neutral-500">&#8599;</span>
+          {{ end }}
+        </h2>
+      </a>
+    </header>
+    <p class="text-sm text-neutral-600 dark:text-neutral-400 mt-1 leading-relaxed">
+      {{ $page.Description | default $page.Summary | plainify }}
+    </p>
+  </div>
+</article>

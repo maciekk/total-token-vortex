@@ -10,6 +10,7 @@ enableStructuredBreadcrumbs = true
 mainSections = ["posts"]
 
 disableImageOptimization = false
+hotlinkFeatureImage = true
 disableTextInHeader = false
 
 highlightCurrentMenuArea = false

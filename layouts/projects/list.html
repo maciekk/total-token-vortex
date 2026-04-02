@@ -1,0 +1,39 @@
+{{ define "main" }}
+  {{ .Scratch.Set "scope" "list" }}
+
+  <header>
+    {{ if .Params.showBreadcrumbs | default (site.Params.list.showBreadcrumbs | default false) }}
+      {{ partial "breadcrumbs.html" . }}
+    {{ end }}
+    <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
+  </header>
+
+  {{ $github := where .RegularPages "Params.projectType" "github" }}
+  {{ $research := where .RegularPages "Params.projectType" "research" }}
+
+  {{ if $github }}
+    <h2 class="mt-12 mb-1 text-2xl font-bold text-neutral-700 dark:text-neutral-300">GitHub Projects</h2>
+    <p class="mb-6 text-neutral-500 dark:text-neutral-400 prose dark:prose-invert">Recent personal projects — tools, games, and experiments.</p>
+    <section class="w-full flex flex-col gap-4">
+      {{ range $github.ByWeight }}
+        {{ partial "project-card.html" (dict "page" . "imageWidth" "18rem") }}
+      {{ end }}
+    </section>
+  {{ end }}
+
+  {{ if $research }}
+    <h2 class="mt-16 mb-1 text-2xl font-bold text-neutral-700 dark:text-neutral-300">Grad School Research</h2>
+    <p class="mb-6 text-neutral-500 dark:text-neutral-400 prose dark:prose-invert">
+      Work from my PhD at the
+      <a href="https://www.dgp.toronto.edu/" class="underline">Dynamic Graphics Project</a>
+      lab, University of Toronto. Focused on motion planning for physically-simulated
+      agents — robots, cars, bikes — and character animation.
+    </p>
+    <section class="w-full flex flex-col gap-4">
+      {{ range $research.ByWeight }}
+        {{ partial "project-card.html" (dict "page" . "imageWidth" "11rem") }}
+      {{ end }}
+    </section>
+  {{ end }}
+
+{{ end }}

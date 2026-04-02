@@ -16,7 +16,7 @@
 
 [[main]]
   name = "CV"
-  url = "/cv.pdf"
+  pageRef = "cv"
   weight = 40
 
 # -- Footer Menu --

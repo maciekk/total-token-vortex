@@ -1,0 +1,307 @@
+{{ define "main" }}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+<style>
+  .cv {
+    max-width: 780px;
+    margin: 2rem auto 4rem;
+    padding: 0 1.5rem;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #1a1a1a;
+  }
+  .dark .cv { color: #e5e5e5; }
+  .cv strong, .cv b { font-weight: 700; }
+
+  /* Header */
+  .cv-name {
+    text-align: center;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.6rem;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    margin: 0 0 0.4rem;
+    text-transform: uppercase;
+  }
+  .cv-contact {
+    text-align: center;
+    font-size: 0.88rem;
+    color: #555;
+    margin: 0 0 1.2rem;
+  }
+  .dark .cv-contact { color: #aaa; }
+  .cv-contact a { color: inherit; text-decoration: none; }
+  .cv-contact a:hover { text-decoration: underline; }
+  .cv-rule {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 0 0 1.8rem;
+  }
+  .dark .cv-rule { border-color: #444; }
+
+  /* Section headings */
+  .cv h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #1a73e8;
+    margin: 2rem 0 0.8rem;
+    border: none;
+  }
+  .dark .cv h2 { color: #6aabff; }
+
+  /* Job blocks */
+  .cv-job { margin-bottom: 1.6rem; }
+  .cv-job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+  .cv-job-title {
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .cv-job-meta {
+    font-size: 0.88rem;
+    color: #555;
+    margin: 0.1rem 0;
+  }
+  .dark .cv-job-meta { color: #aaa; }
+  .cv-job-dates {
+    font-size: 0.85rem;
+    color: #888;
+    white-space: nowrap;
+  }
+  .dark .cv-job-dates { color: #777; }
+
+  /* Lists */
+  .cv ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.4rem;
+    list-style: disc;
+  }
+  .cv ul ul {
+    list-style: circle;
+    margin: 0.2rem 0;
+  }
+  .cv ul ul ul {
+    list-style: none;
+    padding-left: 1.2rem;
+  }
+  .cv ul ul ul li::before {
+    content: counter(item, lower-roman) ". ";
+    counter-increment: item;
+  }
+  .cv ul ul ul { counter-reset: item; }
+  .cv li { margin: 0.25rem 0; }
+
+  /* Education */
+  .cv-edu { margin-bottom: 1rem; }
+  .cv-edu-degree {
+    font-weight: 700;
+  }
+  .cv-edu-school {
+    color: #777;
+    font-weight: 400;
+  }
+  .dark .cv-edu-school { color: #999; }
+  .cv-edu-detail {
+    margin-left: 1.5rem;
+    font-size: 0.9rem;
+    color: #444;
+  }
+  .dark .cv-edu-detail { color: #bbb; }
+  .cv-edu-detail a { color: #1a73e8; }
+  .dark .cv-edu-detail a { color: #6aabff; }
+
+  /* Actions bar */
+  .cv-actions {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    print-color-adjust: exact;
+  }
+  .cv-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    color: #333;
+    background: #f9f9f9;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .cv-btn:hover { background: #eee; }
+  .dark .cv-btn { background: #2a2a2a; border-color: #444; color: #ddd; }
+  .dark .cv-btn:hover { background: #333; }
+
+  @media print {
+    .cv-actions { display: none; }
+    .cv { margin-top: 0; }
+  }
+</style>
+
+<div class="cv">
+
+  <div class="cv-actions not-prose">
+    <a class="cv-btn" href="/cv.pdf" download>&#8595; Download PDF</a>
+    <button class="cv-btn" onclick="window.print()">&#128438; Print</button>
+  </div>
+
+  <h1 class="cv-name">Maciej Kalisiak</h1>
+  <hr class="cv-rule" style="margin-top: 1rem;">
+
+  <h2>Professional Summary</h2>
+  <p><strong>Generalist SWE</strong> with <strong>18 years</strong> of Google experience, spanning:</p>
+  <ul>
+    <li>Solid record as <strong>Individual Contributor</strong> (L4–L6) and <strong>Technical Lead Manager</strong> (TLM)</li>
+    <li>3 Google Product Areas: <strong>Ads</strong>, <strong>GKE/Kubernetes</strong>, and <strong>Gmail</strong></li>
+    <li>IC focus: <strong>high-reliability</strong>, <strong>high-scale</strong> distributed systems, <strong>Observability</strong>, <strong>Debuggability</strong></li>
+    <li>TLM focus: bootstrapping <strong>high-performing teams</strong>, operational excellence</li>
+    <li>AI focus: leveraging LLMs for explaining inherited code, code gen, automating toil</li>
+  </ul>
+
+  <h2>Professional Experience</h2>
+
+  <div class="cv-job">
+    <div class="cv-job-header">
+      <span class="cv-job-title">Gmail Backend Infrastructure</span>
+      <span class="cv-job-dates">Nov 2022 – Current</span>
+    </div>
+    <p class="cv-job-meta">Staff Engineer (L6) – TLM, IC</p>
+    <ul>
+      <li>Managed team of 7 in 6mo+ effort <strong>modernizing</strong> our prod deployment layout.</li>
+      <li>Drove Incident Response in a handful of critical (SVP+ visibility) outages; in particular:
+        <ul>
+          <li>Led team to:
+            <ul>
+              <li>deploy Google's <strong>load-shedding technology</strong> across all our key binaries (6)</li>
+              <li>simplify approach by turning down &amp; eliminating outdated, complex stack feature</li>
+            </ul>
+          </li>
+          <li>(IC) Designed &amp; rolled out a quick'n'dirty <strong>loadtest framework</strong> to reproduce the detected spam attack vector, confirming robustness of our mitigations.</li>
+          <li>(IC) Designed &amp; implemented <strong>biasing mechanism</strong> into our store-and-forward architecture</li>
+        </ul>
+      </li>
+      <li>(IC, sideproject) Modernized Gmail's primary (but very aged) <strong>debugging</strong> tool: rapid implementation in Colab notebook, added new features, Gemini-integration.</li>
+      <li>Drove a variety of <strong>latency improvements</strong>, as well as better measurement; collaborated with our SREs on implementation &amp; debugging of <strong>latency SLOs</strong> for our service.</li>
+      <li>Executed broader team <strong>toil reduction</strong> initiatives, including tracking &amp; analysis of our Release and OnDuty rotations time spend, retiring low value testing infra, merging rotations.</li>
+      <li>Took over &amp; rolled out complex but launch-critical <strong>application licensing</strong> work; executed across 4+ layers of teams, escalations, debugging of the underlying brittle infrastructure.</li>
+    </ul>
+  </div>
+
+  <div class="cv-job">
+    <div class="cv-job-header">
+      <span class="cv-job-title">GKE / Kubernetes</span>
+      <span class="cv-job-dates">Jan 2019 – Oct 2022</span>
+    </div>
+    <p class="cv-job-meta">Staff Engineer (L6) – TLM</p>
+    <ul>
+      <li><strong>Team Growth &amp; Management:</strong>
+        <ul>
+          <li>Instrumental in growth and leadership of the <em>first</em> GCP team in the Waterloo office. GCP now has several hundred engineers in Waterloo.</li>
+          <li>Partnered w/Senior Leadership to rapidly grow GKE team in Waterloo.</li>
+          <li>Onboarded and ramped-up 2 new managers, off-loaded reports (reached ~17 reports for 5+ months).</li>
+          <li>Critical leader who navigated unique challenges: COVID, performance issues, culture friction between employees and externally hired leadership.</li>
+          <li>Rapidly built &amp; led a strong team for Anthos Observability in response to sudden mandate; high team promotion rate (~80%).</li>
+        </ul>
+      </li>
+      <li><strong>Observability Team Leadership:</strong>
+        <ul>
+          <li>Team took on mandate to build and enhance observability through all layers of GKE; built event collection &amp; repository, Datadog-inspired visualization.</li>
+          <li>Took over Anthos Observability (monitoring, metrics, and logs) from the disbanded Stackdriver team; reworked as a common solution across OnPrem, OnBareMetal, and OnAWS.</li>
+          <li>Grew to include lower-level Kubernetes observability after absorbing scope from sister team.</li>
+          <li>Visualization of Cluster History in Pantheon.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="cv-job">
+    <div class="cv-job-header">
+      <span class="cv-job-title">Google Ads / Display Ads</span>
+      <span class="cv-job-dates">Mar 2008 – Dec 2018</span>
+    </div>
+    <p class="cv-job-meta">Senior/Staff Software Engineer (L4–L6) / TLM</p>
+    <ul>
+      <li><strong>Next-gen Serving System:</strong>
+        <ul>
+          <li>Designed and rebuilt the overall control flow structure (FSM) of central "mixer" service.</li>
+          <li>Re-implemented the overall ad targeting flow logic, to parallelize calls to ad exchanges and real time bidders.</li>
+          <li>Led design &amp; reimplementation of a more light-weight "targeting signal" computation, to better fit real-time bidder deadlines.</li>
+          <li>Owned the entire next-gen launch: experimentation, validation, and production rollout.</li>
+          <li>Led team (design, implementation) to devise a turn-key solution for quickly building &amp; introducing further ad provider services (used for AdSense Direct Sales &amp; X-Ads).</li>
+        </ul>
+      </li>
+      <li><strong>Data Architecture &amp; APIs:</strong>
+        <ul>
+          <li>Co-designed and implemented the API, architecture, plumbing for data about the Publisher.</li>
+          <li>Co-designed the unified API for representing which ads won (originally highly heterogeneous, esp. between auction &amp; reservation systems).</li>
+          <li>Designed &amp; induced a more structured form for our central ad request/response API (initially mostly flat "kitchen sink").</li>
+        </ul>
+      </li>
+      <li><strong>Ads Experiments Infra</strong> (production-live A/B experimentation system handling trillion events/day): Modernized through flag API update, introduced file-valued flags, better dashboards.</li>
+      <li><strong>Skunkworks team:</strong> pursued a number of experimental but critical issues:
+        <ul>
+          <li>Developed emergency release procedure &amp; tooling to bring down cherry-pick binary push process from ~8h to ~1h.</li>
+          <li>Tool for correlating prod anomalies with system changes (e.g., binary release, experiments).</li>
+        </ul>
+      </li>
+      <li><strong>Compliance:</strong>
+        <ul>
+          <li>Designed &amp; implemented frequency capping for mobile ads.</li>
+          <li>Ensured <strong>COPPA</strong> compliance of our team's primary servers.</li>
+          <li>Implemented Gambling advertiser blacklisting.</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h2>Education</h2>
+
+  <div class="cv-edu">
+    <p><span class="cv-edu-degree">Computer Science | Ph.D.</span> <span class="cv-edu-school">&ndash; University of Toronto, 1999–2007</span></p>
+    <div class="cv-edu-detail">
+      <p>Thesis: <a href="https://www.dgp.toronto.edu/~mac/research/">Toward More Efficient Motion Planning with Differential Constraints</a><br>
+      Publications: <a href="https://www.dgp.toronto.edu/~mac/research/index.html">list</a></p>
+    </div>
+  </div>
+
+  <div class="cv-edu">
+    <p><span class="cv-edu-degree">Computer Engineering | M.A.Sc.</span> <span class="cv-edu-school">&ndash; University of Toronto, 1997–1999</span></p>
+    <div class="cv-edu-detail">
+      <p>Thesis: <a href="https://www.dgp.toronto.edu/~mac/research/rpp-with-grasps/index.html">A Grasp-based Motion Planning Algorithm for Intelligent Character Animation</a></p>
+    </div>
+  </div>
+
+  <div class="cv-edu">
+    <p><span class="cv-edu-degree">Electrical Engineering | B.A.Sc.</span> <span class="cv-edu-school">&ndash; University of Waterloo, 1992–1997</span></p>
+  </div>
+
+  <h2>Skills</h2>
+  <ul>
+    <li><strong>Languages:</strong> Python, C++, Go, SQL; familiar with: Java, Javascript, LISP, Haskell, Lua</li>
+    <li><strong>Methodologies:</strong> A/B Experimentation, A/B prod diff validation, CI/CD pipelines, Agile, Microservices architecture</li>
+    <li><strong>Data analysis:</strong> Colab (Jupyter Notebook), R</li>
+    <li><strong>Tooling:</strong> Google Cloud, Kubernetes, Docker, <a href="https://github.com/maciekk" style="color:#1a73e8">GitHub</a>, Git, Fig, Linux</li>
+    <li><strong>AI:</strong> Claude Code, gemini-cli, NotebookLLM</li>
+  </ul>
+
+  <hr class="cv-rule" style="margin-top: 2.5rem;">
+  <p style="text-align: center; color: #888; font-size: 0.85rem;">References available upon request.</p>
+
+</div>
+{{ end }}

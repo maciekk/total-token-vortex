@@ -9,4 +9,9 @@
   pageRef = "tags"
   weight = 20
 
+[[main]]
+  name = "CV"
+  url = "/cv.pdf"
+  weight = 30
+
 # -- Footer Menu --

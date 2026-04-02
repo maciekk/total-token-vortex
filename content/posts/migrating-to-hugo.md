@@ -5,7 +5,7 @@ tags:
 - blogging
 - hugo
 - programming
-title: Migrating to Huge (from Blogger)
+title: Migrating to Hugo (from Blogger)
 ---
 
 Ooof, that was rough. Blogger underwent many migrations since I used it last, and whatever migration tooling people have come up with in the intervening years, all are now broken, unsurprisingly. After much Gemini poking, back-and-forth, we arrived at this, which "works" (reads atom.feed):

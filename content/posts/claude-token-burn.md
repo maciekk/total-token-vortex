@@ -34,3 +34,7 @@ The community reached a general consensus on how to manage this:
 - `/clear` religiously. But first, get summary of prior chat, to seed the next one.
 - Try `codex`? There are claims it's just as good, if slower; but limits are far more generous!
 - Fingers crossed a local gemma4 (or better, code-specific) local model will be "good enough"
+
+### Additional own conversations
+- **double check** selected model, using **bare** `/model`! I've had instances I did `/model Sonnet` and it ended up after some days becoming a "custom" model! (and my observation: these are EXPENSIVE!) Always go with "(Recommended)", unless "you know what you are doing"
+- don't forget about `/effort`; for mechanical could use "low"?

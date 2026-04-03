@@ -20,7 +20,7 @@
 
 @media (max-width: 640px) {
   #ascii-vortex {
-    font-size: clamp(8.4px, 1.56vw, 19px);
+    font-size: clamp(14px, 2.6vw, 32px);
   }
 }
 

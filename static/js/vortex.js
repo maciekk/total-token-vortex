@@ -335,10 +335,15 @@
 
   // ── Sizing ────────────────────────────────────────────────────────────────────
   function computeSize() {
-    // Overlay: ~45% of viewport width, capped so it stays manageable
-    const w = Math.min(Math.round(window.innerWidth * 0.45), 520);
+    // Overlay: ~45% of viewport width, capped so it stays manageable.
+    // On mobile, double the size: 90% width with larger char estimate.
+    const isMobile = window.innerWidth <= 640;
+    const widthFrac = isMobile ? 0.90 : 0.45;
+    const widthCap  = isMobile ? 1040 : 520;
+    const charW     = isMobile ? 17   : 8.5;
+    const w = Math.min(Math.round(window.innerWidth * widthFrac), widthCap);
     container.style.width = w + 'px';
-    cols = Math.max(40, Math.min(100, Math.floor(w / 8.5)));
+    cols = Math.max(40, Math.min(100, Math.floor(w / charW)));
     rows = Math.max(16, Math.round(cols / CFG.charAspect));
   }
 

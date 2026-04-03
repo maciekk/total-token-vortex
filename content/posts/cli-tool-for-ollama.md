@@ -14,7 +14,7 @@ Did a bit of research (Gemini), and suggestions are:
 - `aichat`: power-user choice, good for coding
 - `mods`: nice, but more pure CLI tool
 
-## oterm
+### oterm
 To install `oterm`, best to:
 ```sh
 pipx install oterm
@@ -30,7 +30,7 @@ Evaluation:
 
 I could do better with my own Claude coding session in 1h... probably will.
 
-## mods
+### mods
 Source: https://github.com/charmbracelet/mods
 
 Assessment:

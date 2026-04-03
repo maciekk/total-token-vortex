@@ -1,21 +1,28 @@
 {{ define "main" }}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@300;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Merriweather:wght@300;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 
 <style>
   .cv {
-    max-width: 780px;
+    max-width: 920px;
     margin: 2rem auto 4rem;
-    padding: 0 1.5rem;
-    font-family: 'Inter', system-ui, sans-serif;
+    padding: 3rem 3rem;
+    font-family: 'Merriweather', Georgia, serif;
     font-weight: 300;
     font-size: 0.95rem;
     line-height: 1.6;
     color: #1a1a1a;
+    background: #ede8dc;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18), 0 0 2px rgba(0,0,0,0.08);
+    border-radius: 2px;
   }
-  .dark .cv { color: #e5e5e5; }
-  .cv strong, .cv b { font-weight: 700; }
+  .dark .cv {
+    color: #1a1a1a;
+    background: #ede8dc;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.18), 0 0 2px rgba(0,0,0,0.08);
+  }
+  .cv strong, .cv b { font-weight: 700; font-style: normal; }
 
   /* Header */
   .cv-name {
@@ -33,15 +40,15 @@
     color: #555;
     margin: 0 0 1.2rem;
   }
-  .dark .cv-contact { color: #aaa; }
+  .dark .cv-contact { color: #555; }
   .cv-contact a { color: inherit; text-decoration: none; }
   .cv-contact a:hover { text-decoration: underline; }
   .cv-rule {
     border: none;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid #c8c0b0;
     margin: 0 0 1.8rem;
   }
-  .dark .cv-rule { border-color: #444; }
+  .dark .cv-rule { border-color: #c8c0b0; }
 
   /* Section headings */
   .cv h2 {
@@ -50,11 +57,11 @@
     font-weight: 500;
     letter-spacing: 0.05em;
     text-transform: uppercase;
-    color: #1a73e8;
+    color: #2c2c2c;
     margin: 2rem 0 0.8rem;
     border: none;
   }
-  .dark .cv h2 { color: #6aabff; }
+  .dark .cv h2 { color: #2c2c2c; }
 
   /* Job blocks */
   .cv-job { margin-bottom: 1.6rem; }
@@ -74,13 +81,13 @@
     color: #555;
     margin: 0.1rem 0;
   }
-  .dark .cv-job-meta { color: #aaa; }
+  .dark .cv-job-meta { color: #555; }
   .cv-job-dates {
     font-size: 0.85rem;
     color: #888;
     white-space: nowrap;
   }
-  .dark .cv-job-dates { color: #777; }
+  .dark .cv-job-dates { color: #888; }
 
   /* Lists */
   .cv ul {
@@ -112,15 +119,15 @@
     color: #777;
     font-weight: 400;
   }
-  .dark .cv-edu-school { color: #999; }
+  .dark .cv-edu-school { color: #777; }
   .cv-edu-detail {
     margin-left: 1.5rem;
     font-size: 0.9rem;
     color: #444;
   }
-  .dark .cv-edu-detail { color: #bbb; }
-  .cv-edu-detail a { color: #1a73e8; }
-  .dark .cv-edu-detail a { color: #6aabff; }
+  .dark .cv-edu-detail { color: #444; }
+  .cv-edu-detail a { color: #444; text-decoration: underline; }
+  .dark .cv-edu-detail a { color: #444; }
 
   /* Actions bar */
   .cv-actions {
@@ -145,8 +152,8 @@
     transition: background 0.15s;
   }
   .cv-btn:hover { background: #eee; }
-  .dark .cv-btn { background: #2a2a2a; border-color: #444; color: #ddd; }
-  .dark .cv-btn:hover { background: #333; }
+  .dark .cv-btn { background: #f9f9f9; border-color: #ccc; color: #333; }
+  .dark .cv-btn:hover { background: #eee; }
 
   @media print {
     .cv-actions { display: none; }
@@ -296,7 +303,7 @@
     <li><strong>Languages:</strong> Python, C++, Go, SQL; familiar with: Java, Javascript, LISP, Haskell, Lua</li>
     <li><strong>Methodologies:</strong> A/B Experimentation, A/B prod diff validation, CI/CD pipelines, Agile, Microservices architecture</li>
     <li><strong>Data analysis:</strong> Colab (Jupyter Notebook), R</li>
-    <li><strong>Tooling:</strong> Google Cloud, Kubernetes, Docker, <a href="https://github.com/maciekk" style="color:#1a73e8">GitHub</a>, Git, Fig, Linux</li>
+    <li><strong>Tooling:</strong> Google Cloud, Kubernetes, Docker, <a href="https://github.com/maciekk" style="color:#444">GitHub</a>, Git, Fig, Linux</li>
     <li><strong>AI:</strong> Claude Code, gemini-cli, NotebookLLM</li>
   </ul>
 

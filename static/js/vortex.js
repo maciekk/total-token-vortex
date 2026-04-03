@@ -400,8 +400,9 @@
     const nowOn = localStorage.getItem('vortexEnabled') === 'false';
     localStorage.setItem('vortexEnabled', nowOn);
 
-    const btn = document.getElementById('vortex-toggle');
-    if (btn) { btn.style.opacity = nowOn ? '1' : '0.25'; btn.style.color = nowOn ? 'white' : ''; }
+    document.querySelectorAll('.vortex-toggle-btn').forEach(function (btn) {
+      btn.style.opacity = nowOn ? '1' : '0.25'; btn.style.color = nowOn ? 'white' : '';
+    });
 
     if (nowOn) {
       container.style.transition = 'opacity 0.5s';

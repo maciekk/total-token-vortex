@@ -2,11 +2,11 @@
   // Set the vortex toggle button's visual state from localStorage on every page.
   // The actual animation control lives in vortex.js (homepage only).
   document.addEventListener('DOMContentLoaded', function () {
-    var btn = document.getElementById('vortex-toggle');
-    if (!btn) return;
     var on = localStorage.getItem('vortexEnabled') !== 'false';
-    btn.style.opacity = on ? '1' : '0.25';
-    btn.style.color   = on ? 'white' : '';
+    document.querySelectorAll('.vortex-toggle-btn').forEach(function (btn) {
+      btn.style.opacity = on ? '1' : '0.25';
+      btn.style.color   = on ? 'white' : '';
+    });
   });
 </script>
 

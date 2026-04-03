@@ -442,7 +442,6 @@
     buildCellCoords();
     initParticles();
 
-    container.style.opacity    = '0';
     container.style.transition = 'opacity 1s ease-in';
 
     // Respect stored preference; default is on
@@ -451,6 +450,12 @@
         const ph = photoCenter();
         if (ph) spawnComet(ph);
         orbActive = true;
+        // Position the container at the spawn point before fading in so there
+        // is no 1-frame flash at the initial top:0 left:0 position.
+        const cw = container.offsetWidth  || 400;
+        const ch = container.offsetHeight || 200;
+        container.style.left = (orbX - window.scrollX - cw / 2) + 'px';
+        container.style.top  = (orbY - window.scrollY - ch / 2) + 'px';
         container.style.opacity = '0.8';
       }, 5000);
     }

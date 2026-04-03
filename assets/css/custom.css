@@ -26,6 +26,7 @@
 
 #ascii-vortex-container {
   min-height: 8rem;
+  opacity: 0;
 }
 
 .vortex-spark {

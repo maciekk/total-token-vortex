@@ -5,7 +5,7 @@
   const CFG = {
     numArms:          3,
     spiralTightness:  1.8,     // radians of twist (shorter, less-wrapped arms)
-    rotationSpeed:    0.40,    // rad/s for the whole structure (~16s/revolution)
+    rotationSpeed:    2.00,    // rad/s for the whole structure (~3s/revolution)
     armWidthBase:     0.40,    // angular half-width of arms
     blackHoleRadius:  0.11,
     accretionRadius:  0.155,

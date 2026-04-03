@@ -13,6 +13,7 @@ Did a bit of research (Gemini), and suggestions are:
 - `oterm`: best all around, for general chat
 - `aichat`: power-user choice, good for coding
 - `mods`: nice, but more pure CLI tool
+- `elia`: similar to `oterm`, but maybe better? If I can get it running...
 
 ### oterm
 To install `oterm`, best to:

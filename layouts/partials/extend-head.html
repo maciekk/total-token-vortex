@@ -1,3 +1,15 @@
+<script>
+  // Set the vortex toggle button's visual state from localStorage on every page.
+  // The actual animation control lives in vortex.js (homepage only).
+  document.addEventListener('DOMContentLoaded', function () {
+    var btn = document.getElementById('vortex-toggle');
+    if (!btn) return;
+    var on = localStorage.getItem('vortexEnabled') !== 'false';
+    btn.style.opacity = on ? '1' : '0.25';
+    btn.style.color   = on ? 'white' : '';
+  });
+</script>
+
 <style>
   /* Responsive project card images: portrait = stacked, landscape/sm+ = side-by-side */
   .project-card-img {

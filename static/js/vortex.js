@@ -31,6 +31,7 @@
   let orbActive   = false;  // becomes true after the initial 5 s delay
   let offScreenTs = null;   // safety-net: respawn if off-screen too long
   let respawning  = false;
+  let entryTimer  = null;   // handle for the 5 s startup delay
   const ORB_GM  = 3e6;  // gravitational parameter (px³ s⁻²)
   const ORB_EPS = 55;   // softening length (px) — prevents singularity at close approach
 
@@ -391,16 +392,41 @@
     if (rafId) { cancelAnimationFrame(rafId); rafId = null; }
   }
 
+  // ── Toggle (called by toolbar button on any page) ─────────────────────────────
+  // Defined at IIFE level so it's set exactly once and has stable closure over
+  // all state variables including entryTimer.
+  window.vortexToggle = function () {
+    if (!container) return;                     // vortex not present on this page
+    const nowOn = localStorage.getItem('vortexEnabled') === 'false';
+    localStorage.setItem('vortexEnabled', nowOn);
+
+    const btn = document.getElementById('vortex-toggle');
+    if (btn) { btn.style.opacity = nowOn ? '1' : '0.25'; btn.style.color = nowOn ? 'white' : ''; }
+
+    if (nowOn) {
+      container.style.transition = 'opacity 0.5s';
+      if (!orbActive) {
+        const ph = photoCenter();
+        if (ph) spawnComet(ph);
+        orbActive = true;
+      }
+      container.style.opacity = '0.8';
+      startAnimation();
+    } else {
+      if (entryTimer) { clearTimeout(entryTimer); entryTimer = null; }
+      orbActive = false;
+      container.style.transition = 'opacity 0.5s';
+      container.style.opacity    = '0';
+      stopAnimation();
+    }
+  };
+
   // ── Init ──────────────────────────────────────────────────────────────────────
   function init() {
     pre       = document.getElementById('ascii-vortex');
     container = document.getElementById('ascii-vortex-container');
     if (!pre || !container) return;
 
-    // Dark halo behind visible characters so they pop against any background.
-    // drop-shadow operates on the composited element output (the gradient glyphs),
-    // projecting a shadow into page space — unlike text-shadow it doesn't interact
-    // with background-clip:text / color:transparent.
     pre.style.filter = [
       'drop-shadow(0 0 2px rgba(0,0,0,1))',
       'drop-shadow(0 0 5px rgba(0,0,0,1))',
@@ -414,24 +440,28 @@
     highlightGrid = new Uint8Array(cols * rows);
     buildCellCoords();
     initParticles();
-    // Gradient is set on first rendered frame (see loop()), when the pre has
-    // real dimensions. document.fonts.ready fires too early (pre is still empty).
 
-    // Hidden on load; slides in from a viewport edge after 5 s
     container.style.opacity    = '0';
     container.style.transition = 'opacity 1s ease-in';
-    setTimeout(() => {
-      const ph = photoCenter();
-      if (ph) spawnComet(ph);
-      orbActive = true;
-      container.style.opacity = '0.8';
-    }, 5000);
+
+    // Respect stored preference; default is on
+    if (localStorage.getItem('vortexEnabled') !== 'false') {
+      entryTimer = setTimeout(() => {
+        const ph = photoCenter();
+        if (ph) spawnComet(ph);
+        orbActive = true;
+        container.style.opacity = '0.8';
+      }, 5000);
+    }
 
     startAnimation();
 
-    // Pause when the tab is hidden to save resources
     document.addEventListener('visibilitychange', () => {
-      document.hidden ? stopAnimation() : startAnimation();
+      if (document.hidden) {
+        stopAnimation();
+      } else if (localStorage.getItem('vortexEnabled') !== 'false') {
+        startAnimation();
+      }
     });
 
     window.addEventListener('resize', onResize, { passive: true });

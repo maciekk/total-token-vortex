@@ -22,7 +22,7 @@ Alternatively, it might be better just to edit `archetypes/default.md`, which is
 Also, on `config/_default/hugo.toml` can add option:
 ```toml
 # For YAML
-metaDataFormat: "yaml"
+metaDataFormat = yaml
 ```
 
 ## Creating new post

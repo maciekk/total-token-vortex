@@ -1,9 +1,9 @@
 ---
 date: 2026-04-02T18:57:29-04:00
-draft: true
+draft: false
 tags:
 - hugo
-- blog
+- blogging
 title: New Hugo Post
 ---
 
@@ -41,4 +41,11 @@ hugo
 
 # bring up local server, to review draft
 hugo server -D
+```
+
+## Post Scriptum
+
+In case of mess up with TOML-vs-YAML, apparently you can have `hugo` convert:
+```sh
+hugo convert toYAML --output content_as_yaml
 ```

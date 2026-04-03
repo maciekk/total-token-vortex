@@ -20,12 +20,14 @@
     </button>
   {{ end }}
 
+  {{ if .IsHome }}
   <button
     id="vortex-toggle"
     aria-label="Toggle vortex animation"
     title="Toggle vortex"
     class="vortex-toggle-btn text-base transition-opacity duration-200"
     onclick="window.vortexToggle && window.vortexToggle()">꩜</button>
+  {{ end }}
 
   {{ if .Site.Params.footer.showAppearanceSwitcher | default false }}
     <div class="flex items-center">

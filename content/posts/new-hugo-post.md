@@ -15,9 +15,15 @@ It is recommended:
 - use TOML for config (e.g., `hugo.toml`)
 - use YAML for content frontmatter
 
-Thus below we will use `--format yaml` for new posts.
+I've seen one place mention using `--format yaml`, but this fails when I try `hugo new content`, says flag is not known.
 
-However, it might be better just to edit `archetypes/default.md`, which is used as template for new posts?
+Alternatively, it might be better just to edit `archetypes/default.md`, which is used as template for new posts.
+
+Also, on `config/_default/hugo.toml` can add option:
+```toml
+# For YAML
+metaDataFormat: "yaml"
+```
 
 ## Creating new post
 How to properly start a new blog post in hugo (captured to shell script):
@@ -30,8 +36,7 @@ FNAME_PATH=content/posts/$FNAME
 
 cd ~/src/total-token-vortex/
 
-# NOTE: as noted above, YAML is preferred for content frontmatter
-hugo new content $FNAME_PATH --format yaml
+hugo new content $FNAME_PATH
 
 # leave as 'draft' for now, to evaluate end result first
 nvim $FNAME_PATH

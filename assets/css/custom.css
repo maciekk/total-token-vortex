@@ -1,3 +1,32 @@
+/* ── ASCII Vortex ──────────────────────────────────────────────────────────── */
+#ascii-vortex {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: clamp(7px, 1.3vw, 16px);
+  line-height: 1.18;
+  letter-spacing: 0.04em;
+  /* Gradient & background-clip set by vortex.js; this color is the fallback */
+  color: rgba(148, 163, 184, 0.80);
+  border: none;
+  margin: 0 auto;
+  width: fit-content;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: pre;
+  user-select: none;
+  opacity: 0.90;
+  display: block;
+  text-align: left;
+}
+
+#ascii-vortex-container {
+  min-height: 8rem;
+}
+
+.vortex-spark {
+  color: #fff;
+  text-shadow: 0 0 6px #ffee44, 0 0 2px #fff;
+}
+
 /* Tone down blockquote text brightness and weight in dark mode */
 .dark .prose blockquote,
 .dark .prose :where(blockquote):not(:where([class~="not-prose"],[class~="not-prose"] *)) {

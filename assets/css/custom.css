@@ -1,0 +1,6 @@
+/* Tone down blockquote text brightness and weight in dark mode */
+.dark .prose blockquote,
+.dark .prose :where(blockquote):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  --tw-prose-quotes: rgba(var(--color-neutral-400), 1);
+  font-weight: 400;
+}

@@ -427,7 +427,7 @@
     container = document.getElementById('ascii-vortex-container');
     if (!pre || !container) return;
 
-    pre.style.filter = [
+    container.style.filter = [
       'drop-shadow(0 0 2px rgba(0,0,0,1))',
       'drop-shadow(0 0 5px rgba(0,0,0,1))',
       'drop-shadow(0 0 12px rgba(0,0,0,1))',

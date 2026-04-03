@@ -12,6 +12,9 @@ buildFuture = false
 
 enableEmoji = true
 
+# For YAML
+metaDataFormat = "yaml"
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.extensions]

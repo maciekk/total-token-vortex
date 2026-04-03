@@ -1,8 +1,10 @@
-+++
-date = '2026-04-02T19:03:22-04:00'
-draft = false
-title = 'Trying Out Gemma4'
-+++
+---
+date: 2026-04-02T19:03:22-04:00
+draft: false
+tags:
+- ai
+title: Trying Out Gemma4
+---
 
 ## Set up
 

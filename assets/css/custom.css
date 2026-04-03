@@ -18,6 +18,12 @@
   text-align: left;
 }
 
+@media (max-width: 640px) {
+  #ascii-vortex {
+    font-size: clamp(8.4px, 1.56vw, 19px);
+  }
+}
+
 #ascii-vortex-container {
   min-height: 8rem;
 }

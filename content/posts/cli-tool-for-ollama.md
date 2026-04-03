@@ -7,7 +7,7 @@ tags:
 title: Cli Tool for Ollama
 ---
 
-## CLI tool for Ollama
+## Chat tools
 
 Did a bit of research (Gemini), and suggestions are:
 - `oterm`: best all around, for general chat
@@ -43,3 +43,8 @@ into further adjacent topic. I had to `Ctrl-C` after probably 10 minutes and 30
 pages... Initial query was about which model would be best for coding, and I
 ended up at topic "OPERATIONAL PROTOCOL AGREEMENT: SYSTEMIC EPISTEMIC REVIEW
 (SER)"...!!
+
+## Other tools
+
+Honorable mentions:
+- `gollama` - very cool TUI for managing loaded models

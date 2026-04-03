@@ -5,7 +5,7 @@
   const CFG = {
     numArms:          3,
     spiralTightness:  1.8,     // radians of twist (shorter, less-wrapped arms)
-    rotationSpeed:    0.45,    // rad/s for the whole structure (~14s/revolution)
+    rotationSpeed:    0.90,    // rad/s for the whole structure (~7s/revolution)
     armWidthBase:     0.40,    // angular half-width of arms
     blackHoleRadius:  0.11,
     accretionRadius:  0.155,
@@ -25,6 +25,14 @@
   let lastTime = null, animating = false, rafId = null, gradientApplied = false;
   let pre, container;
   let resizeTimer = null;
+  // ── Orbital state ─────────────────────────────────────────────────────────────
+  // The vortex orbits the profile photo like a body in a gravity well.
+  let orbX, orbY, orbVx, orbVy;
+  let orbActive   = false;  // becomes true after the initial 5 s delay
+  let offScreenTs = null;   // safety-net: respawn if off-screen too long
+  let respawning  = false;
+  const ORB_GM  = 3e6;  // gravitational parameter (px³ s⁻²)
+  const ORB_EPS = 55;   // softening length (px) — prevents singularity at close approach
 
   // ── Math helpers ─────────────────────────────────────────────────────────────
   function smoothstep(edge0, edge1, x) {
@@ -226,16 +234,111 @@
     if (elapsed < frameInterval * 0.85) return;
     lastTime = ts;
     updateParticles(elapsed / 1000);
+    updateOrbit(elapsed / 1000);
     pre.innerHTML = renderFrame(ts / 1000);
     if (!gradientApplied) { setGradient(); gradientApplied = true; }
   }
 
+  // ── Orbital mechanics ─────────────────────────────────────────────────────────
+  // Returns the document-space centre of the profile photo, or null if not found.
+  // Using document coords keeps the orbit fixed in page space — scrolling the page
+  // scrolls the vortex along with it.
+  function photoCenter() {
+    const img = document.querySelector('img.rounded-full');
+    if (!img) return null;
+    const r = img.getBoundingClientRect();
+    return {
+      x: r.left + r.width  / 2 + window.scrollX,
+      y: r.top  + r.height / 2 + window.scrollY,
+    };
+  }
+
+  // Place the vortex at apoapsis of a highly-eccentric ellipse centred on the
+  // photo — Halley's-comet style.  The vortex drifts slowly off-screen near
+  // apoapsis, then falls in, whips around the photo at high speed, and flings
+  // back out along the same path.  The orbital mechanics guarantee it returns
+  // from the same direction every time without any edge-tracking logic.
+  //
+  // Orbit parameters (with GM = 3e6):
+  //   ra   550–850 px  →  apoapsis off-screen in most directions
+  //   rp    55–110 px  →  dramatic close pass (above softening radius)
+  //   T   ≈ 25–40 s    →  returns roughly every half-minute
+  //   v at periapsis ≈ 200–320 px/s  (fast slingshot)
+  //   v at apoapsis  ≈  18–28 px/s  (slow drift)
+  function spawnComet(ph) {
+    const ra  = 550 + Math.random() * 300;
+    const rp  = 55   + Math.random() * 55;
+    // Exact apoapsis velocity from vis-viva / angular-momentum conservation
+    const v_a = Math.sqrt(ORB_GM * 2 * rp / (ra * (rp + ra)));
+    // Random apoapsis direction — comet "comes from" a different place each time
+    const theta = Math.random() * 2 * Math.PI;
+    orbX  = ph.x + ra * Math.cos(theta);
+    orbY  = ph.y + ra * Math.sin(theta);
+    // Perpendicular velocity (tangent to the ellipse at apoapsis), random CW/CCW
+    const s = Math.random() < 0.5 ? 1 : -1;
+    orbVx = -s * v_a * Math.sin(theta);
+    orbVy =  s * v_a * Math.cos(theta);
+  }
+
+  function isOffViewport() {
+    const margin = 200;
+    const vx = orbX - window.scrollX;
+    const vy = orbY - window.scrollY;
+    return vx < -margin || vx > window.innerWidth  + margin ||
+           vy < -margin || vy > window.innerHeight + margin;
+  }
+
+  function updateOrbit(dt) {
+    if (!orbActive || respawning) return;
+    if (dt > 0.1) dt = 0.1;
+
+    const ph = photoCenter();
+    if (!ph) return;
+
+    // Safety net: if somehow off-screen for > 120 s (e.g. energy escaped due to
+    // numerical drift), fade out and respawn a fresh comet.
+    if (isOffViewport()) {
+      if (!offScreenTs) offScreenTs = performance.now();
+      if (performance.now() - offScreenTs > 120000) {
+        respawning = true;
+        container.style.transition = 'opacity 0.4s';
+        container.style.opacity    = '0';
+        setTimeout(() => {
+          spawnComet(photoCenter() || ph);
+          container.style.transition = 'opacity 1s';
+          container.style.opacity    = '0.8';
+          offScreenTs = null;
+          respawning  = false;
+        }, 500);
+      }
+    } else {
+      offScreenTs = null;
+    }
+
+    const dx  = ph.x - orbX;
+    const dy  = ph.y - orbY;
+    const r2  = dx * dx + dy * dy + ORB_EPS * ORB_EPS;
+    const r   = Math.sqrt(r2);
+    const acc = ORB_GM / r2;
+
+    orbVx += acc * (dx / r) * dt;
+    orbVy += acc * (dy / r) * dt;
+    orbX  += orbVx * dt;
+    orbY  += orbVy * dt;
+
+    const cw = container.offsetWidth  || 400;
+    const ch = container.offsetHeight || 200;
+    container.style.left = (orbX - window.scrollX - cw / 2) + 'px';
+    container.style.top  = (orbY - window.scrollY - ch / 2) + 'px';
+  }
+
   // ── Sizing ────────────────────────────────────────────────────────────────────
   function computeSize() {
-    // Full container width; rows chosen so chars form square pixels on screen
-    const w = container.clientWidth;
-    cols = Math.max(60, Math.min(160, Math.floor(w / 8.5)));
-    rows = Math.max(20, Math.round(cols / CFG.charAspect));
+    // Overlay: ~45% of viewport width, capped so it stays manageable
+    const w = Math.min(Math.round(window.innerWidth * 0.45), 520);
+    container.style.width = w + 'px';
+    cols = Math.max(40, Math.min(100, Math.floor(w / 8.5)));
+    rows = Math.max(16, Math.round(cols / CFG.charAspect));
   }
 
   // ── Gradient ──────────────────────────────────────────────────────────────────
@@ -294,6 +397,18 @@
     container = document.getElementById('ascii-vortex-container');
     if (!pre || !container) return;
 
+    // Dark halo behind visible characters so they pop against any background.
+    // drop-shadow operates on the composited element output (the gradient glyphs),
+    // projecting a shadow into page space — unlike text-shadow it doesn't interact
+    // with background-clip:text / color:transparent.
+    pre.style.filter = [
+      'drop-shadow(0 0 2px rgba(0,0,0,1))',
+      'drop-shadow(0 0 5px rgba(0,0,0,1))',
+      'drop-shadow(0 0 12px rgba(0,0,0,1))',
+      'drop-shadow(0 0 22px rgba(0,0,0,1))',
+      'drop-shadow(0 0 38px rgba(0,0,0,0.9))',
+    ].join(' ');
+
     computeSize();
     particleGrid  = new Float32Array(cols * rows);
     highlightGrid = new Uint8Array(cols * rows);
@@ -302,10 +417,22 @@
     // Gradient is set on first rendered frame (see loop()), when the pre has
     // real dimensions. document.fonts.ready fires too early (pre is still empty).
 
-    const observer = new IntersectionObserver((entries) => {
-      entries[0].isIntersecting ? startAnimation() : stopAnimation();
-    }, { threshold: 0.05 });
-    observer.observe(container);
+    // Hidden on load; slides in from a viewport edge after 5 s
+    container.style.opacity    = '0';
+    container.style.transition = 'opacity 1s ease-in';
+    setTimeout(() => {
+      const ph = photoCenter();
+      if (ph) spawnComet(ph);
+      orbActive = true;
+      container.style.opacity = '0.8';
+    }, 5000);
+
+    startAnimation();
+
+    // Pause when the tab is hidden to save resources
+    document.addEventListener('visibilitychange', () => {
+      document.hidden ? stopAnimation() : startAnimation();
+    });
 
     window.addEventListener('resize', onResize, { passive: true });
   }

@@ -7,8 +7,11 @@ tags:
 title: Claude Token Burn
 ---
 
-Interesting Reddit post:
-- https://www.reddit.com/r/ClaudeAI/comments/1satb89/claude_usage_gets_burned_absurdly_fast_for/
+{{< lead >}}
+Where did all my tokens go???
+{{< /lead >}}
+
+Interesting [Reddit post](https://www.reddit.com/r/ClaudeAI/comments/1satb89/claude_usage_gets_burned_absurdly_fast_for/) on `r/ClaudeAI`.
 
 ## AI Summary
 

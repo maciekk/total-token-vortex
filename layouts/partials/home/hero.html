@@ -44,7 +44,7 @@
           {{ end }}
         </div>
         <div
-          class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8 flex flex-col items-center justify-center text-center">
+          class="relative px-4 py-16 sm:px-6 sm:py-24 lg:py-32 lg:px-8 flex flex-col items-center justify-start text-center">
           {{ with .Site.Params.Author.image }}
             {{ $authorImage := "" }}
             {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
@@ -114,10 +114,11 @@
               </div>
             {{ end }}
           </div>
+          <style>#hero-bio p { margin: 0; }</style>
           {{ if not $disableHeroImageFilter }}
-            <section class="prose prose-invert w-full">{{ .Content }}</section>
+            <section class="prose prose-invert" style="position:absolute;bottom:2rem;left:0;right:0;padding:0 2rem;opacity:0.5;font-size:0.875rem;max-width:none;text-align:center;" id="hero-bio">{{ .Content }}</section>
           {{ else }}
-            <section class="prose dark:prose-invert w-full">{{ .Content }}</section>
+            <section class="prose dark:prose-invert" style="position:absolute;bottom:2rem;left:0;right:0;padding:0 2rem;opacity:0.5;font-size:0.875rem;max-width:none;text-align:center;" id="hero-bio">{{ .Content }}</section>
           {{ end }}
         </div>
       </div>

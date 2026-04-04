@@ -32,8 +32,9 @@
   let offScreenTs = null;   // safety-net: respawn if off-screen too long
   let respawning  = false;
   let entryTimer  = null;   // handle for the 5 s startup delay
-  const ORB_GM  = 3e6;  // gravitational parameter (px³ s⁻²)
-  const ORB_EPS = 55;   // softening length (px) — prevents singularity at close approach
+  const ORB_GM      = 16.0e6; // gravitational parameter (px³ s⁻²)
+  const ORB_EPS     = 260;    // softening length (px) — caps extreme close-approach speed
+  const ORB_MAX_SPD = 260;    // px/s — hard velocity cap so mobile never frame-skips
 
   // ── Math helpers ─────────────────────────────────────────────────────────────
   function smoothstep(edge0, edge1, x) {
@@ -266,9 +267,37 @@
   //   T   ≈ 25–40 s    →  returns roughly every half-minute
   //   v at periapsis ≈ 200–320 px/s  (fast slingshot)
   //   v at apoapsis  ≈  18–28 px/s  (slow drift)
+  // Place the vortex at a random viewport edge, aimed roughly toward the photo,
+  // so it enters from the side immediately (no off-screen wait).
+  function spawnFromEdge(ph) {
+    const margin = 80; // px outside visible area so it enters cleanly
+    const edge   = Math.floor(Math.random() * 4); // 0=top 1=right 2=bottom 3=left
+    let ex, ey;
+    if (edge === 0) { ex = ph.x + (Math.random() - 0.5) * window.innerWidth * 0.6; ey = window.scrollY - margin; }
+    else if (edge === 1) { ex = window.scrollX + window.innerWidth + margin; ey = ph.y + (Math.random() - 0.5) * window.innerHeight * 0.6; }
+    else if (edge === 2) { ex = ph.x + (Math.random() - 0.5) * window.innerWidth * 0.6; ey = window.scrollY + window.innerHeight + margin; }
+    else { ex = window.scrollX - margin; ey = ph.y + (Math.random() - 0.5) * window.innerHeight * 0.6; }
+
+    orbX = ex; orbY = ey;
+    // Inject at near-circular velocity: mostly tangential so it enters orbit rather
+    // than flying past.  v_circ = sqrt(GM/r), with a small inward radial component
+    // (15–25%) so it spirals in slightly rather than escaping immediately.
+    const dx   = ph.x - ex;
+    const dy   = ph.y - ey;
+    const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+    const vCirc = Math.min(Math.sqrt(ORB_GM / dist), ORB_MAX_SPD * 0.85) * 0.75;
+    const radialFrac = 0.30 + Math.random() * 0.15; // 30–45% inward
+    const s = Math.random() < 0.5 ? 1 : -1;
+    // Unit tangent (perpendicular to radial, in chosen CW/CCW direction)
+    const tx = -s * (dy / dist);
+    const ty =  s * (dx / dist);
+    orbVx = tx * vCirc + (dx / dist) * vCirc * radialFrac;
+    orbVy = ty * vCirc + (dy / dist) * vCirc * radialFrac;
+  }
+
   function spawnComet(ph) {
-    const ra  = 550 + Math.random() * 300;
-    const rp  = 55   + Math.random() * 55;
+    const ra  = 500 + Math.random() * 300;
+    const rp  = 100  + Math.random() * 100;
     // Exact apoapsis velocity from vis-viva / angular-momentum conservation
     const v_a = Math.sqrt(ORB_GM * 2 * rp / (ra * (rp + ra)));
     // Random apoapsis direction — comet "comes from" a different place each time
@@ -324,6 +353,9 @@
 
     orbVx += acc * (dx / r) * dt;
     orbVy += acc * (dy / r) * dt;
+    // Hard cap on speed so close passes stay smooth on mobile
+    const spd = Math.sqrt(orbVx * orbVx + orbVy * orbVy);
+    if (spd > ORB_MAX_SPD) { const f = ORB_MAX_SPD / spd; orbVx *= f; orbVy *= f; }
     orbX  += orbVx * dt;
     orbY  += orbVy * dt;
 
@@ -402,8 +434,8 @@
   // all state variables including entryTimer.
   window.vortexToggle = function () {
     if (!container) return;                     // vortex not present on this page
-    const nowOn = localStorage.getItem('vortexEnabled') === 'false';
-    localStorage.setItem('vortexEnabled', nowOn);
+    const nowOn = localStorage.getItem('vortexEnabled') !== 'true';
+    localStorage.setItem('vortexEnabled', nowOn ? 'true' : 'false');
 
     document.querySelectorAll('.vortex-toggle-btn').forEach(function (btn) {
       btn.style.opacity = nowOn ? '1' : '0.25'; btn.style.color = nowOn ? 'white' : '';
@@ -413,7 +445,14 @@
       container.style.transition = 'opacity 0.5s';
       if (!orbActive) {
         const ph = photoCenter();
-        if (ph) spawnComet(ph);
+        if (ph) {
+          spawnFromEdge(ph);
+          // Pre-position container at spawn point before fade-in
+          const cw = container.offsetWidth  || 400;
+          const ch = container.offsetHeight || 200;
+          container.style.left = (orbX - window.scrollX - cw / 2) + 'px';
+          container.style.top  = (orbY - window.scrollY - ch / 2) + 'px';
+        }
         orbActive = true;
       }
       container.style.opacity = '0.8';
@@ -447,22 +486,20 @@
     buildCellCoords();
     initParticles();
 
-    container.style.transition = 'opacity 1s ease-in';
+    container.style.transition = 'opacity 0.5s ease-in';
 
-    // Respect stored preference; default is on
-    if (localStorage.getItem('vortexEnabled') !== 'false') {
-      entryTimer = setTimeout(() => {
-        const ph = photoCenter();
-        if (ph) spawnComet(ph);
+    // Respect stored preference; default is OFF
+    if (localStorage.getItem('vortexEnabled') === 'true') {
+      const ph = photoCenter();
+      if (ph) {
+        spawnFromEdge(ph);
         orbActive = true;
-        // Position the container at the spawn point before fading in so there
-        // is no 1-frame flash at the initial top:0 left:0 position.
         const cw = container.offsetWidth  || 400;
         const ch = container.offsetHeight || 200;
         container.style.left = (orbX - window.scrollX - cw / 2) + 'px';
         container.style.top  = (orbY - window.scrollY - ch / 2) + 'px';
         container.style.opacity = '0.8';
-      }, 5000);
+      }
     }
 
     startAnimation();
@@ -470,7 +507,7 @@
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
         stopAnimation();
-      } else if (localStorage.getItem('vortexEnabled') !== 'false') {
+      } else if (localStorage.getItem('vortexEnabled') === 'true') {
         startAnimation();
       }
     });

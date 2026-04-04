@@ -34,7 +34,7 @@ Also from B:
 - Install monitoring tools (below)
 - Save explanations locally: `claude "explain the database schema" > docs/schema-explanation.md`
 
-Read-once hook:
+[Read-once](https://github.com/Bande-a-Bonnot/Boucle-framework/tree/main/tools/read-once) hook:
 ```sh
 curl -fsSL https://raw.githubusercontent.com/Bande-a-Bonnot/Boucle-framework/main/tools/read-once/install.sh | bash
 ```

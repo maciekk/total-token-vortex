@@ -2,8 +2,8 @@
 date: 2010-12-05 18:39:00+00:00
 draft: false
 tags:
-- hardware
-- linux
+- Hardware
+- Linux
 title: console-kit-daemon x60
 ---
 

@@ -2,7 +2,7 @@
 date: 2011-10-18 02:48:00+00:00
 draft: false
 tags:
-- linux
+- Linux
 title: fixing broken Ubuntu Unity
 ---
 

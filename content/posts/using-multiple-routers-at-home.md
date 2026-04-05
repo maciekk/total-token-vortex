@@ -2,9 +2,9 @@
 date: 2009-08-06 14:53:00.006000+00:00
 draft: false
 tags:
-- ai
-- fountain-pen
-- hardware
+- Ai
+- FountainPen
+- Hardware
 title: using multiple routers at home
 ---
 

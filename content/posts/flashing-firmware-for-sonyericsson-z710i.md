@@ -2,8 +2,8 @@
 date: 2007-09-24 20:29:00+00:00
 draft: false
 tags:
-- fountain-pen
-- hardware
+- FountainPen
+- Hardware
 title: flashing firmware for SonyEricsson Z710i
 ---
 

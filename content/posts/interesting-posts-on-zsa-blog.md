@@ -2,7 +2,7 @@
 date: 2024-08-13 18:28:00+00:00
 draft: false
 tags:
-- blogging
+- Blogging
 title: Interesting posts on ZSA blog
 ---
 

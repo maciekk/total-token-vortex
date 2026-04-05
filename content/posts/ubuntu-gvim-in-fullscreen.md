@@ -2,8 +2,8 @@
 date: 2011-05-29 00:01:00+00:00
 draft: false
 tags:
-- keyboard
-- linux
+- Keyboard
+- Linux
 title: 'Ubuntu: gVim in fullscreen'
 ---
 

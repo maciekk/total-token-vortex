@@ -2,10 +2,10 @@
 date: 2007-11-12 21:28:00.001000+00:00
 draft: false
 tags:
-- ai
-- fountain-pen
-- programming
-- web
+- Ai
+- FountainPen
+- Programming
+- Web
 title: Windows STOP messages
 ---
 

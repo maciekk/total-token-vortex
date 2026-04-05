@@ -2,8 +2,8 @@
 date: 2024-08-13 18:14:00+00:00
 draft: false
 tags:
-- fountain-pen
-- links
+- FountainPen
+- Links
 title: 'Interesting HN article: How to think in writing'
 ---
 

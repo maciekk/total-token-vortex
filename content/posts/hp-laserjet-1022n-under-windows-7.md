@@ -2,9 +2,9 @@
 date: 2012-06-12 02:49:00.003000+00:00
 draft: false
 tags:
-- fountain-pen
-- hardware
-- review
+- FountainPen
+- Hardware
+- Review
 title: HP Laserjet 1022n under Windows 7
 ---
 

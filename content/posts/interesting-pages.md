@@ -2,8 +2,8 @@
 date: 2007-08-26 05:28:00+00:00
 draft: false
 tags:
-- hardware
-- web
+- Hardware
+- Web
 title: interesting pages
 ---
 

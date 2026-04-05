@@ -2,7 +2,7 @@
 date: 2008-10-27 15:51:00+00:00
 draft: false
 tags:
-- links
+- Links
 title: my site for collecting quotes
 ---
 

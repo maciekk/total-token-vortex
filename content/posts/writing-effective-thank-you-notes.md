@@ -2,8 +2,8 @@
 date: 2011-03-13 20:20:00.003000+00:00
 draft: false
 tags:
-- ai
-- fountain-pen
+- Ai
+- FountainPen
 title: writing effective Thank You notes
 ---
 

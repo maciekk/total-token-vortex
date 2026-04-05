@@ -2,8 +2,8 @@
 date: 2009-06-18 21:53:00+00:00
 draft: false
 tags:
-- fountain-pen
-- hardware
+- FountainPen
+- Hardware
 title: great explanation of nib sizes
 ---
 

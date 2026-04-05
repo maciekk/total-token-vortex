@@ -2,10 +2,10 @@
 date: 2009-06-08 14:00:00.005000+00:00
 draft: false
 tags:
-- ai
-- fountain-pen
-- hardware
-- photography
+- Ai
+- FountainPen
+- Hardware
+- Photography
 title: fountain pens
 ---
 

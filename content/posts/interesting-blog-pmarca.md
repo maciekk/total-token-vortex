@@ -2,8 +2,8 @@
 date: 2007-07-28 18:52:00+00:00
 draft: false
 tags:
-- blogging
-- links
+- Blogging
+- Links
 title: 'interesting blog: pmarca'
 ---
 

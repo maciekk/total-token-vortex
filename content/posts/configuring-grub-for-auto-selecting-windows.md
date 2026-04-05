@@ -2,7 +2,7 @@
 date: 2011-09-11 18:35:00+00:00
 draft: false
 tags:
-- linux
+- Linux
 title: configuring grub for auto-selecting Windows
 ---
 

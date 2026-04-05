@@ -2,8 +2,8 @@
 date: 2007-08-24 03:34:00+00:00
 draft: false
 tags:
-- ai
-- programming
+- Ai
+- Programming
 title: modifying the 'look-in' buttons in standard file dialog
 ---
 

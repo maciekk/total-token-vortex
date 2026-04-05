@@ -2,8 +2,8 @@
 date: 2008-11-19 00:31:00.003000+00:00
 draft: false
 tags:
-- hardware
-- links
+- Hardware
+- Links
 title: fix for slow mouse scrolling in Total Commander
 ---
 

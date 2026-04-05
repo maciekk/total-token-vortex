@@ -2,9 +2,9 @@
 date: 2008-12-02 16:17:00+00:00
 draft: false
 tags:
-- hardware
-- links
-- photography
+- Hardware
+- Links
+- Photography
 title: Improved open-source firmware for cameras
 ---
 

@@ -2,10 +2,10 @@
 date: 2009-01-20 21:39:00.003000+00:00
 draft: false
 tags:
-- hardware
-- photography
-- programming
-- web
+- Hardware
+- Photography
+- Programming
+- Web
 title: '''hot pixels'' in digital cameras'
 ---
 

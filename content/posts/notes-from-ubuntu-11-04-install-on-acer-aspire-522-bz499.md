@@ -2,9 +2,9 @@
 date: 2011-05-29 04:14:00+00:00
 draft: false
 tags:
-- fountain-pen
-- hardware
-- linux
+- FountainPen
+- Hardware
+- Linux
 title: Notes from Ubuntu 11.04 install on Acer Aspire 522 - BZ499
 ---
 

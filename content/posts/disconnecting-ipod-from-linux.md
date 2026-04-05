@@ -2,8 +2,8 @@
 date: 2011-10-28 17:49:00.001000+00:00
 draft: false
 tags:
-- hardware
-- linux
+- Hardware
+- Linux
 title: disconnecting iPod from Linux
 ---
 

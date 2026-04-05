@@ -2,7 +2,7 @@
 date: 2017-08-16 12:05:00.003000+00:00
 draft: false
 tags:
-- links
+- Links
 title: Don't build things; build FACTORIES that build things
 ---
 

@@ -2,7 +2,7 @@
 date: 2024-08-13 18:21:00+00:00
 draft: false
 tags:
-- links
+- Links
 title: 'Potential purchase: hand-held scope'
 ---
 

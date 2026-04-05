@@ -2,10 +2,10 @@
 date: 2005-07-05 03:04:00+00:00
 draft: false
 tags:
-- fountain-pen
-- links
-- programming
-- review
+- FountainPen
+- Links
+- Programming
+- Review
 title: alternatives to 'aglorithmic.sty'
 ---
 

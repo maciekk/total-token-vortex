@@ -2,8 +2,8 @@
 date: 2007-09-27 17:15:00+00:00
 draft: false
 tags:
-- links
-- web
+- Links
+- Web
 title: Randy Pausch
 ---
 

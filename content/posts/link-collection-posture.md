@@ -2,8 +2,8 @@
 date: 2007-07-28 19:21:00+00:00
 draft: false
 tags:
-- fountain-pen
-- links
+- FountainPen
+- Links
 title: 'link collection: posture'
 ---
 

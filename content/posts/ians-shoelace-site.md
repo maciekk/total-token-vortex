@@ -2,8 +2,8 @@
 date: 2009-05-14 14:37:00.001000+00:00
 draft: false
 tags:
-- links
-- review
+- Links
+- Review
 title: Ian's Shoelace Site
 ---
 

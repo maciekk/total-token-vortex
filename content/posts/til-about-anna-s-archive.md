@@ -2,8 +2,8 @@
 date: 2024-08-13 18:16:00+00:00
 draft: false
 tags:
-- links
-- review
+- Links
+- Review
 title: TIL abotu Anna's Archive
 ---
 

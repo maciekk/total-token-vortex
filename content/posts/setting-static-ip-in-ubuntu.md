@@ -2,8 +2,8 @@
 date: 2011-10-17 00:46:00+00:00
 draft: false
 tags:
-- ai
-- linux
+- Ai
+- Linux
 title: setting static IP in Ubuntu
 ---
 

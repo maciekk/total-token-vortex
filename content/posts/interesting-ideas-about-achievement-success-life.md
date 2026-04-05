@@ -2,8 +2,8 @@
 date: 2007-09-27 16:53:00+00:00
 draft: false
 tags:
-- blogging
-- productivity
+- Blogging
+- Productivity
 title: interesting ideas about achievement, success, life
 ---
 

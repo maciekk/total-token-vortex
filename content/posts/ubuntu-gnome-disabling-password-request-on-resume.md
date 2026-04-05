@@ -2,8 +2,8 @@
 date: 2011-05-28 18:58:00+00:00
 draft: false
 tags:
-- hardware
-- linux
+- Hardware
+- Linux
 title: 'Ubuntu/gnome: disabling password request on resume'
 ---
 

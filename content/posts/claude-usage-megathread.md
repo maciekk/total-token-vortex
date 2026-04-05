@@ -2,8 +2,8 @@
 date: 2026-04-03T20:22:28-04:00
 draft: false
 tags:
-- ai
-- claude
+- Ai
+- Claude
 title: Claude Usage Megathread
 ---
 

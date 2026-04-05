@@ -2,8 +2,8 @@
 date: 2017-08-14 21:30:00.002000+00:00
 draft: false
 tags:
-- links
-- review
+- Links
+- Review
 title: How life is like the Westworld Maze
 ---
 

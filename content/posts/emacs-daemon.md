@@ -2,7 +2,7 @@
 date: 2011-11-02 23:52:00.002000+00:00
 draft: false
 tags:
-- blogging
+- Blogging
 title: emacs --daemon
 ---
 

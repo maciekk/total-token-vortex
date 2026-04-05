@@ -2,8 +2,8 @@
 date: 2008-10-07 17:40:00.004000+00:00
 draft: false
 tags:
-- linux
-- programming
+- Linux
+- Programming
 title: bash scripting docs
 ---
 

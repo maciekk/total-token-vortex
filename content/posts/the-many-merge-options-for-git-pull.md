@@ -2,8 +2,8 @@
 date: 2024-08-20 17:03:00+00:00
 draft: false
 tags:
-- ai
-- programming
+- Ai
+- Programming
 title: The many merge options for 'git pull'
 ---
 

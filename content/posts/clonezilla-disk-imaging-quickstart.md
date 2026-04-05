@@ -2,7 +2,7 @@
 date: 2011-10-27 02:08:00.001000+00:00
 draft: false
 tags:
-- hardware
+- Hardware
 title: clonezilla (disk imaging) quickstart
 ---
 

@@ -2,7 +2,7 @@
 date: 2011-10-21 01:54:00+00:00
 draft: false
 tags:
-- hardware
+- Hardware
 title: hunting for dock for Nexus S
 ---
 

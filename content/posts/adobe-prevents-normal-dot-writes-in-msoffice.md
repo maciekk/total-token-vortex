@@ -2,9 +2,9 @@
 date: 2007-09-03 13:53:00+00:00
 draft: false
 tags:
-- fountain-pen
-- hardware
-- links
+- FountainPen
+- Hardware
+- Links
 title: Adobe prevents normal.dot writes in MSOffice
 ---
 

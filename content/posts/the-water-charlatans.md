@@ -2,10 +2,10 @@
 date: 2007-08-28 15:49:00+00:00
 draft: false
 tags:
-- ai
-- fountain-pen
-- hardware
-- programming
+- Ai
+- FountainPen
+- Hardware
+- Programming
 title: the water charlatans
 ---
 

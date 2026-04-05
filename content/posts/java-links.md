@@ -2,11 +2,11 @@
 date: 2007-10-17 18:07:00+00:00
 draft: false
 tags:
-- ai
-- fountain-pen
-- hardware
-- programming
-- web
+- Ai
+- FountainPen
+- Hardware
+- Programming
+- Web
 title: Java links
 ---
 

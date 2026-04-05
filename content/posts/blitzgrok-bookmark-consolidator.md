@@ -2,10 +2,10 @@
 date: 2005-07-04 17:00:00+00:00
 draft: false
 tags:
-- ai
-- hardware
-- links
-- web
+- Ai
+- Hardware
+- Links
+- Web
 title: 'BlitzGrok: bookmark consolidator'
 ---
 

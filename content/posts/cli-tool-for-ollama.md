@@ -2,8 +2,8 @@
 date: 2026-04-02T21:25:59-04:00
 draft: false
 tags:
-- ai
-- tools
+- Ai
+- Tools
 title: Cli Tool for Ollama
 ---
 

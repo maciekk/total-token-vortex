@@ -2,9 +2,9 @@
 date: 2005-07-07 00:52:00+00:00
 draft: false
 tags:
-- ai
-- fountain-pen
-- links
+- Ai
+- FountainPen
+- Links
 title: current issues with Thunderbird
 ---
 

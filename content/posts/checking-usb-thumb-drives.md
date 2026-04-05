@@ -2,8 +2,8 @@
 date: 2011-10-25 01:56:00.001000+00:00
 draft: false
 tags:
-- hardware
-- links
+- Hardware
+- Links
 title: checking USB thumb drives
 ---
 

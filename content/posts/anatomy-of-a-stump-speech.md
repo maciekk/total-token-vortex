@@ -2,7 +2,7 @@
 date: 2008-10-18 23:30:00.001000+00:00
 draft: false
 tags:
-- links
+- Links
 title: Anatomy of a Stump Speech
 ---
 

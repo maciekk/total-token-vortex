@@ -2,9 +2,9 @@
 date: 2008-11-18 16:57:00+00:00
 draft: false
 tags:
-- keyboard
-- links
-- productivity
+- Keyboard
+- Links
+- Productivity
 title: 200 useful Macbook key shortcuts
 ---
 

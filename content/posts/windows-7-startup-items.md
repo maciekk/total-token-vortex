@@ -2,7 +2,7 @@
 date: 2011-11-02 23:38:00+00:00
 draft: false
 tags:
-- links
+- Links
 title: 'Windows 7: startup items'
 ---
 

@@ -2,8 +2,8 @@
 date: 2009-06-17 17:34:00+00:00
 draft: false
 tags:
-- fountain-pen
-- links
+- FountainPen
+- Links
 title: 'link: A Simple Guide to Keeping Your Counters Clutter-free'
 ---
 

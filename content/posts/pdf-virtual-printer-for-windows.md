@@ -2,7 +2,7 @@
 date: 2011-03-06 21:12:00+00:00
 draft: false
 tags:
-- hardware
+- Hardware
 title: PDF virtual printer for Windows
 ---
 

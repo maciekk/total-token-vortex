@@ -2,9 +2,9 @@
 date: 2009-06-14 15:35:00.002000+00:00
 draft: false
 tags:
-- fountain-pen
-- hardware
-- keyboard
+- FountainPen
+- Hardware
+- Keyboard
 title: OmniOutliner annoying binding
 ---
 

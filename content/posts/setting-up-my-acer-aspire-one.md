@@ -2,10 +2,10 @@
 date: 2011-01-31 02:13:00+00:00
 draft: false
 tags:
-- fountain-pen
-- hardware
-- keyboard
-- linux
+- FountainPen
+- Hardware
+- Keyboard
+- Linux
 title: setting up my Acer Aspire One
 ---
 

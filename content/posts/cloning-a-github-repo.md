@@ -2,8 +2,8 @@
 date: 2011-10-17 00:41:00+00:00
 draft: false
 tags:
-- ai
-- programming
+- Ai
+- Programming
 title: cloning a github repo
 ---
 

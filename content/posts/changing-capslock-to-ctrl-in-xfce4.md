@@ -2,7 +2,7 @@
 date: 2010-12-05 16:26:00.002000+00:00
 draft: false
 tags:
-- keyboard
+- Keyboard
 title: changing CapsLock to Ctrl in XFCE4
 ---
 

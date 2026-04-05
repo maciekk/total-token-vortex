@@ -2,9 +2,9 @@
 date: 2011-07-31 16:28:00.001000+00:00
 draft: false
 tags:
-- ai
-- fountain-pen
-- hardware
+- Ai
+- FountainPen
+- Hardware
 title: how to reset Furthest Page Read on Kindle
 ---
 

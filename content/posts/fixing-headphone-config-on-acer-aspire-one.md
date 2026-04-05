@@ -2,8 +2,8 @@
 date: 2011-07-01 04:35:00.002000+00:00
 draft: false
 tags:
-- hardware
-- linux
+- Hardware
+- Linux
 title: fixing headphone config on Acer Aspire One
 ---
 

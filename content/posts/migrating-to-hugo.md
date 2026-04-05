@@ -2,9 +2,9 @@
 date: '2026-04-01T00:00:40-04:00'
 draft: false
 tags:
-- blogging
-- hugo
-- programming
+- Blogging
+- Hugo
+- Programming
 title: Migrating to Hugo (from Blogger)
 ---
 

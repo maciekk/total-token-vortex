@@ -2,10 +2,10 @@
 date: 2011-05-21 14:10:00+00:00
 draft: false
 tags:
-- blogging
-- fountain-pen
-- hardware
-- linux
+- Blogging
+- FountainPen
+- Hardware
+- Linux
 title: Ubuntu + my Acer Aspire 522 BZ499
 ---
 

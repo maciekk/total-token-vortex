@@ -2,11 +2,11 @@
 date: 2005-07-10 05:59:00+00:00
 draft: false
 tags:
-- ai
-- blogging
-- fountain-pen
-- links
-- web
+- Ai
+- Blogging
+- FountainPen
+- Links
+- Web
 title: Interesting links on starting a company
 ---
 

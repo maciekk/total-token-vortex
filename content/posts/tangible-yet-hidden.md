@@ -2,9 +2,9 @@
 date: 2005-07-08 03:43:00+00:00
 draft: false
 tags:
-- fountain-pen
-- links
-- productivity
+- FountainPen
+- Links
+- Productivity
 title: tangible yet hidden
 ---
 

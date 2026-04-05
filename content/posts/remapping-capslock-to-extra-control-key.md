@@ -2,8 +2,8 @@
 date: 2011-02-05 19:36:00.003000+00:00
 draft: false
 tags:
-- fountain-pen
-- keyboard
+- FountainPen
+- Keyboard
 title: remapping CapsLock to extra Control key
 ---
 

@@ -2,7 +2,7 @@
 date: 2024-08-13 18:17:00.001000+00:00
 draft: false
 tags:
-- links
+- Links
 title: Kruggsmash playing CoQ
 ---
 

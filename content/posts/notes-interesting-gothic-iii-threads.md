@@ -2,7 +2,7 @@
 date: 2007-08-01 12:55:00+00:00
 draft: false
 tags:
-- hardware
+- Hardware
 title: 'notes: interesting Gothic III threads'
 ---
 

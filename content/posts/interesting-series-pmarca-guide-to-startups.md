@@ -2,7 +2,7 @@
 date: 2007-07-28 18:54:00+00:00
 draft: false
 tags:
-- blogging
+- Blogging
 title: 'interesting series: Pmarca guide to startups'
 ---
 

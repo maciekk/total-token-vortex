@@ -2,7 +2,7 @@
 date: 2010-02-17 04:21:00.003000+00:00
 draft: false
 tags:
-- Ai
+- AI
 - Hardware
 title: BenQ W9000 service menu / overscan
 ---

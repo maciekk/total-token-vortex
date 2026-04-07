@@ -2,7 +2,7 @@
 date: 2007-07-30 18:17:00+00:00
 draft: false
 tags:
-- Ai
+- AI
 - Hardware
 title: hard water woes
 ---

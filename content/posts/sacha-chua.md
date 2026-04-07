@@ -2,7 +2,7 @@
 date: 2007-07-28 19:23:00+00:00
 draft: false
 tags:
-- Ai
+- AI
 - Blogging
 - Hardware
 - Links

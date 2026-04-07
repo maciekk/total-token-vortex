@@ -2,7 +2,7 @@
 date: 2011-10-26 02:55:00+00:00
 draft: false
 tags:
-- Ai
+- AI
 title: gizmo's freeware
 ---
 

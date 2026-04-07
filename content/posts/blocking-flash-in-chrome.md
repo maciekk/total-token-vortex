@@ -2,7 +2,7 @@
 date: 2011-02-21 01:06:00.002000+00:00
 draft: false
 tags:
-- Ai
+- AI
 - Links
 - Web
 title: blocking Flash in Chrome

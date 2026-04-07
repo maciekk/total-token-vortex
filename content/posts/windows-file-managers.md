@@ -2,7 +2,7 @@
 date: 2008-10-13 14:36:00.004000+00:00
 draft: false
 tags:
-- Ai
+- AI
 - Hardware
 title: (Windows) file managers
 ---

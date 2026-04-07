@@ -2,7 +2,7 @@
 date: 2026-04-02T19:03:22-04:00
 draft: false
 tags:
-- Ai
+- AI
 title: Trying Out Gemma4
 ---
 

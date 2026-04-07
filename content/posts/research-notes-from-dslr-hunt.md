@@ -2,7 +2,7 @@
 date: 2009-01-15 15:53:00.005000+00:00
 draft: false
 tags:
-- Ai
+- AI
 - FountainPen
 - Hardware
 - Photography

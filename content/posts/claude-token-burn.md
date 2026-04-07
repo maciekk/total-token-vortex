@@ -2,7 +2,7 @@
 date: 2026-04-03T10:24:01-04:00
 draft: false
 tags:
-- Ai
+- AI
 - Claude
 title: Claude Token Burn
 ---

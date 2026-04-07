@@ -2,7 +2,7 @@
 date: 2011-10-22 02:01:00.001000+00:00
 draft: false
 tags:
-- Ai
+- AI
 - Hardware
 - Linux
 title: Monday as first day of week in GNOME

@@ -2,7 +2,7 @@
 date: 2009-01-22 02:51:00.002000+00:00
 draft: false
 tags:
-- Ai
+- AI
 - Web
 title: Vista wifi troubles
 ---

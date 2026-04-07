@@ -2,7 +2,7 @@
 date: 2005-07-08 03:19:00+00:00
 draft: false
 tags:
-- Ai
+- AI
 - Blogging
 - FountainPen
 - Links

@@ -2,7 +2,7 @@
 date: 2007-11-12 21:28:00.001000+00:00
 draft: false
 tags:
-- Ai
+- AI
 - FountainPen
 - Programming
 - Web

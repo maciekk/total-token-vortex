@@ -2,7 +2,7 @@
 date: 2009-05-20 01:10:00.001000+00:00
 draft: false
 tags:
-- Ai
+- AI
 - Links
 title: 'interesting vid: open-mindedness'
 ---

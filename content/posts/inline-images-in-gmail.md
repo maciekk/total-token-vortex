@@ -2,7 +2,7 @@
 date: 2008-12-24 18:30:00.002000+00:00
 draft: false
 tags:
-- Ai
+- AI
 title: inline images in Gmail
 ---
 

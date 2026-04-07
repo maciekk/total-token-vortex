@@ -2,7 +2,7 @@
 date: 2011-02-17 01:19:00.003000+00:00
 draft: false
 tags:
-- Ai
+- AI
 - Blogging
 title: setting up googlecl in Windows
 ---

@@ -2,7 +2,7 @@
 date: 2007-08-28 15:49:00+00:00
 draft: false
 tags:
-- Ai
+- AI
 - FountainPen
 - Hardware
 - Programming

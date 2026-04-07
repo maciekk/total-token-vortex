@@ -2,7 +2,7 @@
 date: 2005-07-04 17:00:00+00:00
 draft: false
 tags:
-- Ai
+- AI
 - Hardware
 - Links
 - Web

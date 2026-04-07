@@ -6,7 +6,7 @@ tags:
 - Claude
 - Tools
 - Coding
-- Wip
+- WIP
 title: Claude Local Replacement
 ---
 

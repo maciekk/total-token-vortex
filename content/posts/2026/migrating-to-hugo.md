@@ -1,4 +1,6 @@
 ---
+aliases:
+- /posts/migrating-to-hugo/
 date: '2026-04-01T00:00:40-04:00'
 draft: false
 tags:

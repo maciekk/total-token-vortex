@@ -1,4 +1,6 @@
 ---
+aliases:
+- /posts/cli-tool-for-ollama/
 date: 2026-04-02T21:25:59-04:00
 draft: false
 tags:

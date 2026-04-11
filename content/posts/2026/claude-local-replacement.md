@@ -1,4 +1,6 @@
 ---
+aliases:
+- /posts/claude-local-replacement/
 date: 2026-04-02T22:31:28-04:00
 draft: false
 tags:

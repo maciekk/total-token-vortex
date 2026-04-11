@@ -1,4 +1,6 @@
 ---
+aliases:
+- /posts/moon-number-two/
 date: 2026-04-04T19:48:39-04:00
 draft: false
 tags:

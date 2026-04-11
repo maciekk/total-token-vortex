@@ -1,4 +1,6 @@
 ---
+aliases:
+- /posts/new-hugo-post/
 date: 2026-04-02T18:57:29-04:00
 draft: false
 tags:

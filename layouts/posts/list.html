@@ -1,0 +1,41 @@
+{{ define "main" }}
+  {{ .Scratch.Set "scope" "list" }}
+
+  <header>
+    {{ if .Params.showBreadcrumbs | default (site.Params.list.showBreadcrumbs | default false) }}
+      {{ partial "breadcrumbs.html" . }}
+    {{ end }}
+    <h1 class="mt-5 text-4xl font-extrabold text-neutral-900 dark:text-neutral">{{ .Title }}</h1>
+  </header>
+
+  {{ with .Content }}
+    <section class="mt-0 prose flex max-w-full flex-col dark:prose-invert mb-10">
+      <div class="min-w-0 min-h-0 max-w-prose w-full">{{ . }}</div>
+    </section>
+  {{ end }}
+
+  {{/* 10 most recent posts across all years */}}
+  {{ $recentPosts := where .Site.RegularPages "Section" "posts" | first 10 }}
+  {{ if gt (len $recentPosts) 0 }}
+    <h2 class="mt-4 mb-3 text-2xl font-bold text-neutral-700 dark:text-neutral-300">Recent Posts</h2>
+    <section class="space-y-6 w-full">
+      {{ range $recentPosts }}
+        {{ partial "article-link/simple.html" . }}
+      {{ end }}
+    </section>
+  {{ end }}
+
+  {{/* Year navigation */}}
+  {{ if gt (len .Sections) 0 }}
+    <h2 class="mt-10 mb-3 text-2xl font-bold text-neutral-700 dark:text-neutral-300">Browse by Year</h2>
+    <div class="flex flex-wrap gap-2 not-prose">
+      {{ range .Sections.ByTitle.Reverse }}
+        <a href="{{ .RelPermalink }}"
+           class="rounded border border-neutral-300 px-3 py-1 text-sm text-neutral-700 hover:bg-neutral-100 dark:border-neutral-600 dark:text-neutral-300 dark:hover:bg-neutral-700">
+          {{ .Title }}
+          <span class="text-neutral-400 dark:text-neutral-500">({{ len .RegularPages }})</span>
+        </a>
+      {{ end }}
+    </div>
+  {{ end }}
+{{ end }}

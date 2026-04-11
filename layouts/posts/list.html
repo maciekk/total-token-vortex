@@ -14,28 +14,44 @@
     </section>
   {{ end }}
 
-  {{/* 10 most recent posts across all years */}}
-  {{ $recentPosts := where .Site.RegularPages "Section" "posts" | first 10 }}
-  {{ if gt (len $recentPosts) 0 }}
-    <h2 class="mt-4 mb-3 text-2xl font-bold text-neutral-700 dark:text-neutral-300">Recent Posts</h2>
-    <section class="space-y-6 w-full">
-      {{ range $recentPosts }}
-        {{ partial "article-link/simple.html" . }}
-      {{ end }}
-    </section>
-  {{ end }}
+  {{ if .Parent.IsHome }}
+    {{/* Root /posts/ page: 10 most recent posts + year navigation */}}
 
-  {{/* Year navigation */}}
-  {{ if gt (len .Sections) 0 }}
-    <h2 class="mt-10 mb-3 text-2xl font-bold text-neutral-700 dark:text-neutral-300">Browse by Year</h2>
-    <div class="flex flex-wrap gap-2 not-prose">
-      {{ range .Sections.ByTitle.Reverse }}
-        <a href="{{ .RelPermalink }}"
-           class="rounded border border-neutral-300 px-3 py-1 text-sm text-neutral-700 hover:bg-neutral-100 dark:border-neutral-600 dark:text-neutral-300 dark:hover:bg-neutral-700">
-          {{ .Title }}
-          <span class="text-neutral-400 dark:text-neutral-500">({{ len .RegularPages }})</span>
-        </a>
-      {{ end }}
-    </div>
+    {{ $recentPosts := where .Site.RegularPages "Section" "posts" | first 10 }}
+    {{ if gt (len $recentPosts) 0 }}
+      <h2 class="mt-4 mb-3 text-2xl font-bold text-neutral-700 dark:text-neutral-300">Recent Posts</h2>
+      <section class="space-y-6 w-full">
+        {{ range $recentPosts }}
+          {{ partial "article-link/simple.html" . }}
+        {{ end }}
+      </section>
+    {{ end }}
+
+    {{ if gt (len .Sections) 0 }}
+      <h2 class="mt-10 mb-3 text-2xl font-bold text-neutral-700 dark:text-neutral-300">Browse by Year</h2>
+      <div class="flex flex-wrap gap-2 not-prose">
+        {{ range .Sections.ByTitle.Reverse }}
+          <a href="{{ .RelPermalink }}"
+             class="rounded border border-neutral-300 px-3 py-1 text-sm text-neutral-700 hover:bg-neutral-100 dark:border-neutral-600 dark:text-neutral-300 dark:hover:bg-neutral-700">
+            {{ .Title }}
+            <span class="text-neutral-400 dark:text-neutral-500">({{ len .RegularPages }})</span>
+          </a>
+        {{ end }}
+      </div>
+    {{ end }}
+
+  {{ else }}
+    {{/* Year page (e.g. /posts/2026/): list that year's posts */}}
+    {{ if gt (len .RegularPages) 0 }}
+      <section class="space-y-6 w-full">
+        {{ range .RegularPages }}
+          {{ partial "article-link/simple.html" . }}
+        {{ end }}
+      </section>
+    {{ else }}
+      <section class="mt-10 prose dark:prose-invert">
+        <p class="py-8 border-t"><em>No posts yet.</em></p>
+      </section>
+    {{ end }}
   {{ end }}
 {{ end }}

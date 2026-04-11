@@ -2,6 +2,7 @@
 date: 2024-08-20 17:09:00+00:00
 draft: false
 tags:
+- Git
 - Programming
 title: Getting the pretty 'tree' for 'git log'
 ---

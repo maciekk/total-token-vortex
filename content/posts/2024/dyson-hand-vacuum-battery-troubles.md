@@ -2,7 +2,8 @@
 date: 2024-08-13 18:19:00+00:00
 draft: false
 tags:
-- Links
+- DIY
+- Repairs
 title: Dyson hand vacuum battery troubles
 ---
 

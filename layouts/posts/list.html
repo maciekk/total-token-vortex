@@ -41,13 +41,15 @@
     {{ end }}
 
   {{ else }}
-    {{/* Year page (e.g. /posts/2026/): list that year's posts */}}
-    {{ if gt (len .RegularPages) 0 }}
+    {{/* Year page (e.g. /posts/2026/): paginated list of that year's posts */}}
+    {{ $paginator := .Paginate .RegularPages }}
+    {{ if gt $paginator.TotalPages 0 }}
       <section class="space-y-6 w-full">
-        {{ range .RegularPages }}
+        {{ range $paginator.Pages }}
           {{ partial "article-link/simple.html" . }}
         {{ end }}
       </section>
+      {{ partial "pagination.html" . }}
     {{ else }}
       <section class="mt-10 prose dark:prose-invert">
         <p class="py-8 border-t"><em>No posts yet.</em></p>

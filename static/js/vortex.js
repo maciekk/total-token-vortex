@@ -25,9 +25,14 @@
   let lastTime = null, animating = false, rafId = null, gradientApplied = false;
   let pre, container;
   let resizeTimer = null;
+  let baseFontSizePx = 10;      // CSS-resolved font-size, updated at init and resize
+  let baseContainerWidth = 400; // container width at base font size, updated at init and resize
   // ── Orbital state ─────────────────────────────────────────────────────────────
   // The vortex orbits the profile photo like a body in a gravity well.
   let orbX, orbY, orbVx, orbVy;
+  // Z dimension: harmonic oscillator perpendicular to the orbital plane.
+  // Positive orbZ = "above" the page (toward viewer) = larger font.
+  let orbZ = 0, orbVz = 0;
   let orbActive   = false;  // becomes true after the initial 5 s delay
   let offScreenTs = null;   // safety-net: respawn if off-screen too long
   let respawning  = false;
@@ -35,6 +40,8 @@
   const ORB_GM      = 16.0e6; // gravitational parameter (px³ s⁻²)
   const ORB_EPS     = 260;    // softening length (px) — caps extreme close-approach speed
   const ORB_MAX_SPD = 260;    // px/s — hard velocity cap so mobile never frame-skips
+  // Z spring: omega = 2π/T, T ≈ 12 s → omega ≈ 0.524, omega² ≈ 0.274
+  const ORB_OMEGA_Z_SQ = 0.274; // spring constant for Z oscillation
 
   // ── Math helpers ─────────────────────────────────────────────────────────────
   function smoothstep(edge0, edge1, x) {
@@ -293,6 +300,9 @@
     const ty =  s * (dx / dist);
     orbVx = tx * vCirc + (dx / dist) * vCirc * radialFrac;
     orbVy = ty * vCirc + (dy / dist) * vCirc * radialFrac;
+    // Z: start at a random height so oscillation begins immediately
+    orbZ  = (Math.random() - 0.5) * 3.5;  // wider range, biased to hit deep "away"
+    orbVz = (Math.random() - 0.5) * 0.9;
   }
 
   function spawnComet(ph) {
@@ -308,6 +318,9 @@
     const s = Math.random() < 0.5 ? 1 : -1;
     orbVx = -s * v_a * Math.sin(theta);
     orbVy =  s * v_a * Math.cos(theta);
+    // Z: start at a random height so oscillation begins immediately
+    orbZ  = (Math.random() - 0.5) * 3.5;  // wider range, biased to hit deep "away"
+    orbVz = (Math.random() - 0.5) * 0.9;
   }
 
   function isOffViewport() {
@@ -359,10 +372,31 @@
     orbX  += orbVx * dt;
     orbY  += orbVy * dt;
 
-    const cw = container.offsetWidth  || 400;
+    // Z oscillation: simple harmonic motion (spring toward z=0).
+    // Higher z = "above" the page toward viewer = larger font.
+    orbVz -= ORB_OMEGA_Z_SQ * orbZ * dt;
+    orbZ  += orbVz * dt;
+    // Clamp: generous "away" headroom, modest "toward" ceiling
+    orbZ = Math.max(-3.5, Math.min(1.5, orbZ));
+    // Asymmetric mapping — perspective-like away, linear toward:
+    //   toward (orbZ > 0): linear  1 + 0.40·z  → up to 1.60× at z=1.5
+    //   away   (orbZ < 0): exp     exp(0.55·z)  → 0.58× at z=-1, 0.33× at z=-2, 0.19× at z=-3
+    const zScale = orbZ >= 0 ? 1 + 0.40 * orbZ : Math.exp(0.55 * orbZ);
+    pre.style.fontSize = (baseFontSizePx * zScale).toFixed(1) + 'px';
+    // Scale container width so content never clips horizontally
+    const scaledCW = Math.round(baseContainerWidth * zScale);
+    container.style.width = scaledCW + 'px';
+
+    // Centre the container on the orbital position using the now-correct width
     const ch = container.offsetHeight || 200;
-    container.style.left = (orbX - window.scrollX - cw / 2) + 'px';
+    container.style.left = (orbX - window.scrollX - scaledCW / 2) + 'px';
     container.style.top  = (orbY - window.scrollY - ch / 2) + 'px';
+
+    // Depth stacking: slip behind the hero card (z-index 50) when the vortex is
+    // receding from the screen (orbZ < -0.5, font ~76% of base).
+    // -0.5 is well within the typical oscillation amplitude so it triggers regularly.
+    const depthZ = orbZ < -0.5 ? '40' : '60';
+    if (container.style.zIndex !== depthZ) container.style.zIndex = depthZ;
   }
 
   // ── Sizing ────────────────────────────────────────────────────────────────────
@@ -375,6 +409,7 @@
     const charW     = isMobile ? 17   : 8.5;
     const w = Math.min(Math.round(window.innerWidth * widthFrac), widthCap);
     container.style.width = w + 'px';
+    baseContainerWidth = w;
     cols = Math.max(40, Math.min(100, Math.floor(w / charW)));
     rows = Math.max(16, Math.round(cols / CFG.charAspect));
   }
@@ -402,11 +437,36 @@
     pre.style.color = 'transparent'; // only go transparent once gradient is in place
   }
 
+  // Read the CSS-resolved font-size and measure actual content width at base
+  // scale, without any inline override.  Both values are used as the reference
+  // for proportional scaling when orbZ changes.
+  function updateBaseFontSize() {
+    const saved = pre.style.fontSize;
+    pre.style.removeProperty('font-size');
+    baseFontSizePx = parseFloat(getComputedStyle(pre).fontSize) || 10;
+
+    // Measure real character width via a probe (offsetWidth forces a reflow).
+    // This beats the 8.5 px estimate which is ~10-13% too narrow for Courier New.
+    const probe = document.createElement('span');
+    probe.style.cssText = 'position:absolute;visibility:hidden;white-space:pre;font:inherit;letter-spacing:inherit;';
+    probe.textContent = ' '.repeat(cols);
+    pre.appendChild(probe);
+    const measuredW = probe.offsetWidth;
+    pre.removeChild(probe);
+    if (measuredW > 0) {
+      baseContainerWidth = measuredW;
+      container.style.width = measuredW + 'px';
+    }
+
+    if (saved) pre.style.fontSize = saved;
+  }
+
   function rebuildAfterResize() {
     computeSize();
     particleGrid  = new Float32Array(cols * rows);
     highlightGrid = new Uint8Array(cols * rows);
     buildCellCoords();
+    updateBaseFontSize();
     gradientApplied = false;
     lastTime = null;
   }
@@ -481,6 +541,7 @@
     ].join(' ');
 
     computeSize();
+    updateBaseFontSize();
     particleGrid  = new Float32Array(cols * rows);
     highlightGrid = new Uint8Array(cols * rows);
     buildCellCoords();

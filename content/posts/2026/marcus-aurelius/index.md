@@ -7,7 +7,7 @@ title: Marcus Aurelius
 ---
 
 {{< lead >}}
-"It is not death that a man should fear, but he should fear never beginning to live."
+"The impediment to action advances action. What stands in the way becomes the way." -- Marcus Aurelius
 {{< /lead >}}
 
 Now that I picked up Marble filament (Elegoo PLA Marble Cement Grey), I am trying out some busts and other statue-like items. First up, Marcus Aurelius bust.

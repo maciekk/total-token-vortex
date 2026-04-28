@@ -2,7 +2,7 @@
 date: 2026-04-28T11:59:38-04:00
 draft: false
 tags:
-- 3DPrint
+- 3DPrinting
 title: Ares Print
 ---
 
